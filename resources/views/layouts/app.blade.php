@@ -90,7 +90,7 @@
                                 <a href="#">Produto</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="#">Categorias</a>
+                                <a href="{{route('categories.index')}}">Categorias</a>
                             </li>
                         </ul>
                     </div>
