@@ -32,11 +32,17 @@
                     </td>
 
                     <td>
-                        <a href="" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm"><i
+                                class="fas fa-pen"></i></a>
                     </td>
 
                     <td>
-                        <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                        <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
+                            onsubmit="return confirm('Deseja excluir {{ $category->name }}?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
