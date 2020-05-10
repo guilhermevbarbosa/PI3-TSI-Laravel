@@ -39,9 +39,25 @@
                 <label>Desconto</label>
             </div>
 
-            <div class="label-float">
+            <div class="label-float mb-5">
                 <input name="stock" type="text" placeholder=" " value="{{ $product->stock }}" />
                 <label>Estoque</label>
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="category">Categoria</label>
+                <select name="category_id" class="form-control">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}" @if($category->id == $product->category_id) @endif>
+                        {{ $category->name }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Imagem</label>
+                <input type="file" class="form-control" name="image" value="null">
             </div>
 
             <button type="submit" class="btn btn-success mt-4 float-right">Editar</button>

@@ -20,7 +20,7 @@ class CreateProductRequest extends FormRequest
             'price' => 'required',
             'discount' => 'required',
             'stock' => 'required',
-            // 'category_id' => 'required'
+            'category_id' => 'required'
         ];
     }
 }

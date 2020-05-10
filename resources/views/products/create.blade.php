@@ -39,9 +39,18 @@
                 <label>Desconto</label>
             </div>
 
-            <div class="label-float">
+            <div class="label-float mb-5">
                 <input name="stock" type="number" placeholder=" " value="{{ old('stock') }}" />
                 <label>Estoque</label>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Categoria</label>
+                <select name="category_id" class="form-control">
+                    @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
