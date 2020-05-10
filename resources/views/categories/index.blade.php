@@ -20,12 +20,26 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($categories as $category)
                 <tr class="center">
-                    <th scope="row">Nome</th>
-                    <td> <a href="" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                    <td> <a href="" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a></td>
-                    <td><a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a></td>
+                    <th scope="row">{{$category->name}}</th>
+
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm">
+                            <i class="fas fa-eye">
+                            </i>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="" class="btn btn-warning btn-sm"><i class="fas fa-pen"></i></a>
+                    </td>
+
+                    <td>
+                        <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                    </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

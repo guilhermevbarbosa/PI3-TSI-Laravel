@@ -15,8 +15,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
     <script src="{{ asset('js/fAw.js') }}"></script>
 </head>
 
@@ -90,6 +90,13 @@
         <main class="py-4 container">
             <div class="row">
                 <div class="col-12">
+
+                    @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        <i class="far fa-thumbs-up"></i> {{ session()->get('success') }}
+                    </div>
+                    @endif
+
                     @yield('content')
                 </div>
             </div>

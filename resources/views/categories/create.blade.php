@@ -2,13 +2,24 @@
 @section('content')
 <h2 class="text-center">Criar categoria</h2>
 
-<form action="{{ route('categories.store') }}" class="p-3 col-md-6 offset-3" method="POST">
+<form action="{{ route('categories.store') }}" class="p-3 col-md-6 offset-md-3 col-sm-12" method="POST">
+
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul class="list-group">
+            @foreach ($errors->all() as $error)
+            <li class="list-group-item text-danger"><i class="far fa-times-circle"></i> {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     @csrf
 
     <div class="card">
         <div class="card-body">
             <div class="label-float">
-                <input name="name" type="text" placeholder=" " />
+                <input name="name" type="text" placeholder=" " value="{{ old('name') }}" />
                 <label>Nome</label>
             </div>
 
