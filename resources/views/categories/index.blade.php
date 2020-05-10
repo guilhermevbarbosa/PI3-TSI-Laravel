@@ -10,7 +10,7 @@
 <div>
     <div class="row">
 
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead class="thead-light">
                 <tr class="center">
                     <th scope="col">Nome</th>
