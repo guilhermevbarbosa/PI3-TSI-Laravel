@@ -5,6 +5,11 @@
 
 <div class="d-flex mb-2 justify-content-end">
     <a href="{{route('products.create')}}" class="btn btn-success right"><i class="fas fa-plus-circle"></i> Nova</a>
+
+    @if(!$trashed)
+    <a href="{{route('trashed-product.index')}}" class="btn btn-danger right ml-2"><i class="fas fa-recycle"></i>
+        Lixeira</a>
+    @endif
 </div>
 
 <div>
@@ -19,21 +24,29 @@
                     <th scope="col">Preço</th>
                     <th scope="col">Desconto</th>
                     <th scope="col">Estoque</th>
+
+                    @if(!$trashed)
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
-                    <th scope="col">Excluir</th>
+                    @else
+                    <th scope="col">Restaurar</th>
+                    @endif
+
+                    <th scope="col">{{ $trashed ? 'Excluir' : 'Mover pra lixeira' }}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($products as $product)
                 <tr class="center">
-                <th scope="row"><img src="{{ asset('storage/' .$product->image) }}" alt="{{ $product->name }}" width="50" height="50"></th>
+                    <th scope="row"><img src="{{ asset('storage/' .$product->image) }}" alt="{{ $product->name }}"
+                            width="50" height="50"></th>
                     <th scope="row">{{$product->name}}</th>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->discount }}</td>
                     <td>{{ $product->stock }}</td>
 
+                    @if(!$trashed)
                     <td>
                         <a href="" class="btn btn-primary btn-sm">
                             <i class="fas fa-eye">
@@ -45,6 +58,18 @@
                         <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm"><i
                                 class="fas fa-pen"></i></a>
                     </td>
+                    @else
+                    <td>
+                        <form action="{{ route('restore-product.update', $product->id) }}" method="POST"
+                            onsubmit="return confirm('Deseja restaurar {{ $product->name }}?')">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" href="#" class="btn btn-warning btn-sm">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                        </form>
+                    </td>
+                    @endif
 
                     <td>
                         <form action="{{ route('products.destroy', $product->id) }}" method="POST"

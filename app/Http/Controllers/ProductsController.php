@@ -7,6 +7,7 @@ use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        return view('products.index')->with('products', Product::all());
+        return view('products.index')->with('products', Product::all())->with('trashed', false);
     }
 
     public function create()
@@ -73,11 +74,36 @@ class ProductsController extends Controller
         return redirect(route('products.index'));
     }
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-       $product->delete();
+        // Busca o produto entre a lixeira e os ativados
+        $product = Product::withTrashed()->where('id', $id)->firstOrFail();
 
-       session()->flash('success', 'Produto deletado com sucesso!');
-       return redirect(route('products.index'));
+        // Se o produto está na lixeira, deleta a imagem do storage e exclui o produto do banco
+        if($product->trashed()){
+            Storage::delete($product->image);
+            $product->forceDelete();
+
+            session()->flash('success', 'Produto excluído com sucesso');
+        }else{
+            $product->delete();
+
+            session()->flash('success', 'Produto deletado com sucesso!');
+        }
+
+       return redirect()->back();
+    }
+
+    // Retorna apenas os produtos da lixeira do softDeletes
+    public function trashed(){
+        return view('products.index')->with('products', Product::onlyTrashed()->get())->with('trashed', true);
+    }
+
+    public function restore($id){
+        $product = Product::withTrashed()->where('id', $id)->firstOrFail();
+        $product->restore();
+
+        session()->flash('success', 'Produto restaurado');
+        return redirect()->back();
     }
 }
