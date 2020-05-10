@@ -97,6 +97,12 @@
                     </div>
                     @endif
 
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        <i class="fas fa-times-circle"></i> {{ session()->get('error') }}
+                    </div>
+                    @endif
+
                     @yield('content')
                 </div>
             </div>

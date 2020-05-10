@@ -9,12 +9,6 @@ use App\Http\Requests\EditCategoryRequest;
 
 class CategoriesController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         return view('categories.index')->with('categories', Category::all());
