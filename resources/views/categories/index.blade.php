@@ -33,7 +33,7 @@
             <tbody>
                 @foreach ($categories as $category)
                 <tr class="center">
-                    <th scope="row">{{$category->name}}</th>
+                    <th scope="row">{{$category->name}} - ({{ $category->products()->count() }})</th>
 
                     @if(!$trashed)
                     <td>

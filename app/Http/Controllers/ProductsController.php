@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,23 +20,32 @@ class ProductsController extends Controller
 
     public function index()
     {
-        return view('products.index')->with('products', Product::all())->with('trashed', false);
+        return view('products.index')
+        ->with('products', Product::all())
+        ->with('trashed', false);
     }
 
     public function create()
     {
-        return view('products.create')->with('categories', Category::all());
+        return view('products.create')
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all());
     }
 
     public function store(CreateProductRequest $request)
     {
-        // cria a imagem
+        // Salva a imagem no storage
         $image = $request->image->store('products');
+        
+        // Salva a imagem e atualiza o endereço da imagem no banco
         $product = Product::create($request->all());
-
-        // Atualiza o endereço da imagem no banco
         $product->image = $image;
         $product->save();
+
+        // Aramazena as tags pertencentes ao produto no banco na tabela dinâmica product_tag
+        if($request->tags){
+            $product->tags()->attach($request->tags);
+        }
         
         session()->flash('success', 'Produto criado com sucesso!');
         return redirect(route('products.index'));
@@ -56,7 +66,8 @@ class ProductsController extends Controller
     {
         return view('products.edit')
             ->with('product', $product)
-            ->with('categories', Category::all());
+            ->with('categories', Category::all())
+            ->with('tags', Tag::all());
     }
 
     public function update(EditProductRequest $request, Product $product)
@@ -69,6 +80,8 @@ class ProductsController extends Controller
             'stock' => $request->stock,
             'category_id' => $request->category_id
         ]);
+
+        $product->tags()->sync($request->tags);
 
         session()->flash('success', 'Produto alterado com sucesso!');
         return redirect(route('products.index'));

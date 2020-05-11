@@ -11,6 +11,7 @@ class Category extends Model
     protected $fillable = ['name'];
 
     // Retorna OS produtos daquela categoria
+    // Uma categoria tem MUITOS produtos
     public function products(){
         return $this->hasMany(Product::class);
     }

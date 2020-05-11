@@ -56,6 +56,17 @@
             </div>
 
             <div class="form-group">
+                <label for="tags">Tags</label>
+                <select name="tags[]" class="form-control" multiple>
+                    @foreach($tags as $tag)
+                    <option value="{{ $tag->id }}" {{ $product->hasTag($tag->id) ? 'selected' : '' }}>
+                        {{ $tag->name }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="image">Imagem</label>
                 <input type="file" class="form-control" name="image" value="null">
             </div>

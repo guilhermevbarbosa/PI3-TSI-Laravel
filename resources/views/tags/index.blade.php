@@ -33,7 +33,7 @@
             <tbody>
                 @foreach ($tags as $tag)
                 <tr class="center">
-                    <th scope="row">{{$tag->name}}</th>
+                    <th scope="row">{{$tag->name}} - ({{$tag->products()->count()}})</th>
 
                     @if(!$trashed)
                     <td>
