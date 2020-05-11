@@ -83,6 +83,18 @@ class ProductsController extends Controller
 
         $product->tags()->sync($request->tags);
 
+        if($request->image){
+            // Apaga a imagem antiga do storage
+            Storage::delete($product->image);
+
+            // Cria a nova imagem no storage
+            $image = $request->image->store('products');
+
+            // Update do endereço da imagem no banco
+            $product->image = $image;
+            $product->save();
+        }
+
         session()->flash('success', 'Produto alterado com sucesso!');
         return redirect(route('products.index'));
     }

@@ -1,8 +1,18 @@
 @extends('layouts.app')
+
+@section('javascript')
+<script>
+    window.onload = function() {
+        $('.tagSelection').select2();
+    }
+</script>
+@endsection
+
 @section('content')
 <h2 class="text-center">Editar produto</h2>
 
-<form action="{{ route('products.update', $product->id) }}" class="p-3 col-md-6 offset-md-3 col-sm-12" method="POST">
+<form action="{{ route('products.update', $product->id) }}" class="p-3 col-md-6 offset-md-3 col-sm-12" method="POST"
+    enctype="multipart/form-data">
 
     @if($errors->any())
     <div class="alert alert-danger">
@@ -57,7 +67,7 @@
 
             <div class="form-group">
                 <label for="tags">Tags</label>
-                <select name="tags[]" class="form-control" multiple>
+                <select name="tags[]" class="form-control tagSelection" multiple>
                     @foreach($tags as $tag)
                     <option value="{{ $tag->id }}" {{ $product->hasTag($tag->id) ? 'selected' : '' }}>
                         {{ $tag->name }}
@@ -68,7 +78,7 @@
 
             <div class="form-group">
                 <label for="image">Imagem</label>
-                <input type="file" class="form-control" name="image" value="null">
+                <input type="file" class="form-control" name="image">
             </div>
 
             <button type="submit" class="btn btn-success mt-4 float-right">Editar</button>

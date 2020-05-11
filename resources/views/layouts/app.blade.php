@@ -12,12 +12,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/fAw.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
-    <script src="{{ asset('js/fAw.js') }}"></script>
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+
+    @yield('javascript')
 </head>
 
 <body>
@@ -95,7 +97,7 @@
                             </div>
                         </li>
                         @endguest
-                        
+
                     </ul>
                 </div>
         </nav>

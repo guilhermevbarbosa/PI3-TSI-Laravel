@@ -1,4 +1,13 @@
 @extends('layouts.app')
+
+@section('javascript')
+<script>
+    window.onload = function() {
+        $('.tagSelection').select2();
+    }
+</script>
+@endsection
+
 @section('content')
 <h2 class="text-center">Criar produto</h2>
 
@@ -55,7 +64,7 @@
 
             <div class="form-group">
                 <label for="tags">Tags</label>
-                <select name="tags[]" class="form-control" multiple>
+                <select name="tags[]" class="form-control tagSelection" multiple>
                     @foreach($tags as $tag)
                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @endforeach
