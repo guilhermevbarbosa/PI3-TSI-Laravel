@@ -8,7 +8,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->group(function() {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('users/profile', 'UsersController@edit')->name('user.edit');
+    Route::put('users/profile', 'UsersController@update')->name('users.update');
+});
+
 
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::resource('products', 'ProductsController');
