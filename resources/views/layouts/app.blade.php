@@ -48,6 +48,9 @@
 
                         @if(auth()->user()->isAdmin())
                         <li class="nav-item">
+                            <a class="nav-link" href="{{route('users.index')}}">Usuários</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{route('tags.index')}}">Tags</a>
                         </li>
                         <li class="nav-item">

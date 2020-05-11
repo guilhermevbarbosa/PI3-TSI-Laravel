@@ -10,7 +10,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth', 'client'])->group(function(){
     Route::resource('products', 'ProductsController');
     Route::resource('categories', 'CategoriesController');
     Route::resource('tags', 'TagsController');
@@ -23,4 +23,7 @@ Route::middleware('auth')->group(function(){
     Route::get('trashed-tags', 'TagsController@trashed')->name('trashed-tags.index');
     Route::put('restore-tag/{tag}', 'TagsController@restore')->name('restore-tag.update');
     // ROTAS LIXEIRA
+
+    Route::get('users', 'UsersController@index')->name('users.index');
+    Route::put('users/{user}/change-admin', 'UsersController@changeAdmin')->name('users.change-admin');
 });
