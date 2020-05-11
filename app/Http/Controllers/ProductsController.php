@@ -76,7 +76,7 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-        // Busca o produto entre a lixeira e os ativados
+        // Busca o produto entre a lixeira e os ativados 
         $product = Product::withTrashed()->where('id', $id)->firstOrFail();
 
         // Se o produto está na lixeira, deleta a imagem do storage e exclui o produto do banco

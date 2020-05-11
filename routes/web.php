@@ -16,4 +16,6 @@ Route::middleware('auth')->group(function(){
 
     Route::get('trashed-products', 'ProductsController@trashed')->name('trashed-product.index');
     Route::put('restore-product/{product}', 'ProductsController@restore')->name('restore-product.update');
+    Route::get('trashed-categories', 'CategoriesController@trashed')->name('trashed-categories.index');
+    Route::put('restore-category/{category}', 'CategoriesController@restore')->name('restore-category.update');
 });

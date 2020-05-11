@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        return view('categories.index')->with('categories', Category::all());
+        return view('categories.index')->with('categories', Category::all())->with('trashed', false);
     }
 
     public function create()
@@ -55,11 +55,32 @@ class CategoriesController extends Controller
         return redirect(route('categories.index'));
     }
 
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
+        $category = Category::withTrashed()->where('id', $id)->firstOrFail();
 
-        session()->flash('success', 'Categoria deletada com sucesso!');
-        return redirect(route('categories.index'));
+        if($category->trashed()){
+            $category->forceDelete();
+
+            session()->flash('success', 'Categoria deletada com sucesso');
+        }else{
+            $category->delete();
+
+            session()->flash('success', 'Categoria enviada para a lixeira');
+        }
+
+        return redirect()->back();
+    }
+
+    public function trashed(){
+        return view('categories.index')->with('categories', Category::onlyTrashed()->get())->with('trashed', true);
+    }
+
+    public function restore($id){
+        $category = Category::withTrashed()->where('id', $id)->firstOrFail();
+        $category->restore();
+
+        session()->flash('success', 'Categoria restaurada');
+        return redirect()->back();
     }
 }
