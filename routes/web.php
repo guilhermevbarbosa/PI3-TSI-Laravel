@@ -13,9 +13,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->group(function(){
     Route::resource('products', 'ProductsController');
     Route::resource('categories', 'CategoriesController');
+    Route::resource('tags', 'TagsController');
 
+    // ROTAS LIXEIRA
     Route::get('trashed-products', 'ProductsController@trashed')->name('trashed-product.index');
     Route::put('restore-product/{product}', 'ProductsController@restore')->name('restore-product.update');
     Route::get('trashed-categories', 'CategoriesController@trashed')->name('trashed-categories.index');
     Route::put('restore-category/{category}', 'CategoriesController@restore')->name('restore-category.update');
+    Route::get('trashed-tags', 'TagsController@trashed')->name('trashed-tags.index');
+    Route::put('restore-tag/{tag}', 'TagsController@restore')->name('restore-tag.update');
+    // ROTAS LIXEIRA
 });

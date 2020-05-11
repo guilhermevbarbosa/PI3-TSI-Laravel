@@ -51,7 +51,7 @@ class CategoriesController extends Controller
             'name' => $request->name
         ]); 
 
-        session()->flash('success', 'Categoria alterada com sucesso!');
+        session()->flash('success', 'Categoria alterada com sucesso');
         return redirect(route('categories.index'));
     }
 
