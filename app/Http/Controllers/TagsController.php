@@ -11,12 +11,12 @@ class TagsController extends Controller
 {
     public function index()
     {
-        return view('tags.index')->with('tags', Tag::all())->with('trashed', false);
+        return view('admin.tags.index')->with('tags', Tag::all())->with('trashed', false);
     }
 
     public function create()
     {
-        return view('tags.create');
+        return view('admin.tags.create');
     }
 
     public function store(CreateTagRequest $request)
@@ -29,12 +29,6 @@ class TagsController extends Controller
         return redirect(route('tags.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -42,7 +36,7 @@ class TagsController extends Controller
 
     public function edit(Tag $tag)
     {
-        return view('tags.edit')->with('tag', $tag);
+        return view('admin.tags.edit')->with('tag', $tag);
     }
 
     public function update(EditTagRequest $request, Tag $tag)
@@ -79,7 +73,7 @@ class TagsController extends Controller
     }
 
     public function trashed(){
-        return view('tags.index')->with('tags', Tag::onlyTrashed()->get())->with('trashed', true);
+        return view('admin.tags.index')->with('tags', Tag::onlyTrashed()->get())->with('trashed', true);
     }
 
     public function restore($id){
