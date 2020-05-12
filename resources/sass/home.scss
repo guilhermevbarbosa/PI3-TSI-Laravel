@@ -39,3 +39,33 @@
         width: 6px;
     }
 }
+
+.title-sec-prod {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.img-store {
+    object-fit: cover;
+    height: 200px;
+}
+
+span{
+    &.discount{
+        color: green;
+        font-weight: bold;
+    }
+
+    &.discount-val {
+        font-weight: 400;
+        color: rgb(168, 166, 166);
+        text-decoration: line-through;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+b {
+    text-decoration: none;
+    display: block;
+}

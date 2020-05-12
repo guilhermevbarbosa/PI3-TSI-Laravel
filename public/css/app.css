@@ -10915,6 +10915,35 @@ a.text-dark:focus {
   width: 6px;
 }
 
+.title-sec-prod {
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.img-store {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 200px;
+}
+
+span.discount {
+  color: green;
+  font-weight: bold;
+}
+
+span.discount-val {
+  font-weight: 400;
+  color: #a8a6a6;
+  text-decoration: line-through;
+  display: block;
+  margin-bottom: 20px;
+}
+
+b {
+  text-decoration: none;
+  display: block;
+}
+
 .center {
   text-align: center;
 }
@@ -10994,10 +11023,5 @@ a.text-dark:focus {
 
 #app .navbar.store {
   background: #ffb761 !important;
-}
-
-#app .navbar.store a {
-  color: #fff !important;
-  font-weight: 500;
 }
 

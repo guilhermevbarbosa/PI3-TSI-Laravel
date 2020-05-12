@@ -13,6 +13,9 @@ class HomeController extends Controller
     }
 
     public function homeStore(){
-        return view('store.home')->with('products', Product::all());
+        $products = Product::all();
+
+        return view('store.home')
+        ->with('featuredProds', $products->sortByDesc('discount')->take(4));
     }
 }

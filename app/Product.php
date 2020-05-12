@@ -32,6 +32,6 @@ class Product extends Model
     }
 
     public function discountPrice(){
-        return $this->formatMoney($this->price);
+        return $this->formatMoney($this->price * (1 - $this->discount / 100));
     }
 }
