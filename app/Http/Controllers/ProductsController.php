@@ -20,14 +20,14 @@ class ProductsController extends Controller
 
     public function index()
     {
-        return view('products.index')
+        return view('admin.products.index')
         ->with('products', Product::all())
         ->with('trashed', false);
     }
 
     public function create()
     {
-        return view('products.create')
+        return view('admin.products.create')
         ->with('categories', Category::all())
         ->with('tags', Tag::all());
     }
@@ -51,12 +51,6 @@ class ProductsController extends Controller
         return redirect(route('products.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -64,7 +58,7 @@ class ProductsController extends Controller
 
     public function edit(Product $product)
     {
-        return view('products.edit')
+        return view('admin.products.edit')
             ->with('product', $product)
             ->with('categories', Category::all())
             ->with('tags', Tag::all());
@@ -121,7 +115,7 @@ class ProductsController extends Controller
 
     // Retorna apenas os produtos da lixeira do softDeletes
     public function trashed(){
-        return view('products.index')->with('products', Product::onlyTrashed()->get())->with('trashed', true);
+        return view('admin.products.index')->with('products', Product::onlyTrashed()->get())->with('trashed', true);
     }
 
     public function restore($id){
