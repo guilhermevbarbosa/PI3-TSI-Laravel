@@ -97,6 +97,36 @@
             @yield('content')
         </main>
 
+        <footer class="container-float bg-footer p-5">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <h2 class="h4">Localização</h2>
+                    <address>
+                        Rua Lorem, ipsum dolor, 386 <br>
+                        Lorem, ipsum - Lorem, LR. <br>
+                        CEP: 0000-000 <br>
+                        Telefone: (11) 8888-8888
+                    </address>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <h2 class="h4">Horário de funcionamento</h2>
+                    <ul class="list-unstyled pl-2">
+                        <li>Segunda - Sexta: 9:00 - 20:00</li>
+                        <li>Sábado: 9:00 - 16:00</li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <h2 class="h4">Mapa</h2>
+
+                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-46.47894322872162%2C-23.547818703515524%2C-46.47186219692231%2C-23.543274664058107&amp;layer=mapnik"
+                        style="border: 1px solid black"></iframe><br /><small><a
+                            href="https://www.openstreetmap.org/#map=18/-23.54555/-46.47540">Ver Mapa
+                            Ampliado</a></small>
+                </div>
+            </div>
+        </footer>
+
     </div>
 
 
