@@ -1,19 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('store.home');
-});
-
 Auth::routes();
+
+Route::redirect('/', 'home-store');
+Route::get('home-store', 'HomeController@homeStore');
 
 Route::middleware('auth')->group(function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('users/profile', 'UsersController@edit')->name('user.edit');
     Route::put('users/profile', 'UsersController@update')->name('users.update');
 });
-
 
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::resource('products', 'ProductsController');
