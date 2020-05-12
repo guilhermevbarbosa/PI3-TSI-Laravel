@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function index(){
         $users = User::orderBy('name','asc')->get();
 
-        return view('users.index')->with('users', $users);
+        return view('admin.users.index')->with('users', $users);
     }
 
     public function changeAdmin(User $user){
@@ -28,7 +28,7 @@ class UsersController extends Controller
     }
 
     public function edit(){
-        return view('users.edit')->with('user', auth()->user());
+        return view('admin.users.edit')->with('user', auth()->user());
     }
 
     public function update(EditProfileRequest $request){
