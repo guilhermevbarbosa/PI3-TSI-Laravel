@@ -1,0 +1,16 @@
+.swiper-container {
+    .swiper-slide {
+        img {
+            width: 100%;
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev{
+        color: $orange-nav;
+    }
+
+    .swiper-pagination-bullet-active{
+        background: $orange-nav;
+    }
+}

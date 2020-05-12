@@ -10877,6 +10877,19 @@ a.text-dark:focus {
   }
 }
 
+.swiper-container .swiper-slide img {
+  width: 100%;
+}
+
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-button-prev {
+  color: #ffb761;
+}
+
+.swiper-container .swiper-pagination-bullet-active {
+  background: #ffb761;
+}
+
 .center {
   text-align: center;
 }
@@ -10952,5 +10965,14 @@ a.text-dark:focus {
   font-size: 13px;
   margin-top: 0;
   color: #3951b2;
+}
+
+#app .navbar.store {
+  background: #ffb761 !important;
+}
+
+#app .navbar.store a {
+  color: #fff !important;
+  font-weight: 500;
 }
 

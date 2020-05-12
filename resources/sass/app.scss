@@ -7,6 +7,9 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+// Pages
+@import "home";
+
 .center {
     text-align: center;
 }
@@ -63,4 +66,17 @@
     font-size: 13px;
     margin-top: 0;
     color: #3951b2;
+}
+
+#app {
+    .navbar {
+        &.store {
+            background: $orange-nav !important;
+
+            a {
+                color: #fff !important;
+                font-weight: 500;
+            }
+        }
+    }
 }
