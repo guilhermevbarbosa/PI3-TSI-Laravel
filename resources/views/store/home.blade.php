@@ -13,15 +13,15 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="https://via.placeholder.com/1080x400/FEFEFE">
+            <img class="first">
         </div>
-
+        
         <div class="swiper-slide">
-            <img src="https://via.placeholder.com/1080x400/dc4e4e">
+            <img class="second">
         </div>
-
+        
         <div class="swiper-slide">
-            <img src="https://via.placeholder.com/1080x400/179636">
+            <img class="third">
         </div>
     </div>
 

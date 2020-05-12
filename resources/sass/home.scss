@@ -1,16 +1,41 @@
 .swiper-container {
     .swiper-slide {
         img {
+            min-height: 400px;
+            height: 225px;
             width: 100%;
+            background-position: center !important;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+
+            &.first {
+                background: url("https://via.placeholder.com/1080x400/FEFEFE");
+            }
+
+            &.second {
+                background: url("https://via.placeholder.com/1080x400/dc4e4e");
+            }
+
+            &.third {
+                background: url("https://via.placeholder.com/1080x400/179636");
+            }
         }
     }
 
     .swiper-button-next,
-    .swiper-button-prev{
+    .swiper-button-prev {
         color: $orange-nav;
+        outline: none;
     }
 
-    .swiper-pagination-bullet-active{
+    .swiper-pagination-bullet-active {
         background: $orange-nav;
+        height: 10px;
+        width: 10px;
+    }
+
+    .swiper-pagination-bullet {
+        height: 6px;
+        width: 6px;
     }
 }
