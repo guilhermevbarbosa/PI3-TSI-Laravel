@@ -10944,6 +10944,14 @@ b {
   display: block;
 }
 
+.card {
+  transition: all 0.2s;
+}
+
+.card.prod:hover {
+  transform: scale(1.05);
+}
+
 .center {
   text-align: center;
 }

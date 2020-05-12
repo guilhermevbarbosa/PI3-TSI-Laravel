@@ -45,7 +45,7 @@
     <div class="row">
         @foreach ($featuredProds as $product)
         <div class="col-sm-6 col-md-6 col-lg-3 col-12">
-            <div class="card mb-3">
+            <div class="card prod mb-3">
                 <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top img-fluid img-store"
                     alt="{{ $product->name }}">
 
