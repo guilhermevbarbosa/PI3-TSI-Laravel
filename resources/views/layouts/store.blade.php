@@ -48,7 +48,28 @@
 
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarCategoria" role="button"
+                                data-toggle="dropdown"> Categorias</a>
 
+                            <div class="dropdown-menu" aria-labelledby="navbarCategoria">
+                                @foreach (\App\Category::all() as $category)
+                                <a class="dropdown-item"
+                                    href="{{ route('search-category', $category->id) }}">{{ $category->name }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarTag" role="button"
+                                data-toggle="dropdown"> Tags</a>
+
+                            <div class="dropdown-menu" aria-labelledby="navbarTag">
+                                @foreach (\App\Tag::all() as $tag)
+                                <a class="dropdown-item" href="{{ route('search-tag', $tag->id) }}">{{ $tag->name }}</a>
+                                @endforeach
+                            </div>
+                        </li>
                     </ul>
                     <!-- Left Side Of Navbar -->
 
