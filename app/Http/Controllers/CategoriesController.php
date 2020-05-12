@@ -11,12 +11,12 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        return view('categories.index')->with('categories', Category::all())->with('trashed', false);
+        return view('admin.categories.index')->with('categories', Category::all())->with('trashed', false);
     }
 
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     public function store(CreateCategoryRequest $request)
@@ -29,12 +29,6 @@ class CategoriesController extends Controller
         return redirect(route('categories.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -42,7 +36,7 @@ class CategoriesController extends Controller
 
     public function edit(Category $category)
     {
-        return view('categories.edit')->with('category', $category);
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     public function update(EditCategoryRequest $request, Category $category)
@@ -79,7 +73,7 @@ class CategoriesController extends Controller
     }
 
     public function trashed(){
-        return view('categories.index')->with('categories', Category::onlyTrashed()->get())->with('trashed', true);
+        return view('admin.categories.index')->with('categories', Category::onlyTrashed()->get())->with('trashed', true);
     }
 
     public function restore($id){
