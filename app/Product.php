@@ -26,4 +26,12 @@ class Product extends Model
     public function hasTag($tagID){
         return in_array($tagID, $this->tags->pluck('id')->toArray());
     }
+
+    public function formatMoney($value){
+        return 'R$'.number_format($value, 2);
+    }
+
+    public function discountPrice(){
+        return $this->formatMoney($this->price);
+    }
 }
