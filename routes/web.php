@@ -8,6 +8,7 @@ Route::redirect('/', 'home-store');
 Route::get('home-store', 'HomeController@homeStore');
 Route::get('/search/category/{category}', 'HomeController@searchCategory')->name('search-category');
 Route::get('/search/tag/{tag}', 'HomeController@searchTag')->name('search-tag');
+Route::get('show/{product}', 'HomeController@showProduct')->name('show-product');
 // ROTAS LIBERADAS DE AUTENTICAÇÃO
 
 // NECESSÁRIO ESTAR APENAS AUTENTICADO

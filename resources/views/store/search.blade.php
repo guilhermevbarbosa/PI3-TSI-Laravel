@@ -1,7 +1,7 @@
 @extends('layouts.store')
 
 @section('content')
-<section class="container pad-cont">
+<section class="container pad-cont relative">
     <div class="row">
         <div class="mx-auto col-10 text-center">
             <h2 class="text-uppercase"> {{ $title }} </h2>
@@ -16,7 +16,7 @@
             @endforeach
         </div>
 
-        <div class="d-flex justify-content-center mt-4">
+        <div class="d-flex justify-content-center mt-4 m-auto">
             {{ $products->links() }}
         </div>
     </div>

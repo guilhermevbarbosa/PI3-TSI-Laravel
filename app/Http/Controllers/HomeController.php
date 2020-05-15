@@ -33,6 +33,11 @@ class HomeController extends Controller
     public function searchTag(Tag $tag){
         return view('store.search')->with('products', $tag->products()->paginate(2))->with('title', $tag->name);
     }
+
+    // Retorna a view com o produto selecionado
+    public function showProduct(Product $product){
+        return view('store.product')->with('product', $product);
+    }
     // FUNÇÕES DA LOJA
 
 }
