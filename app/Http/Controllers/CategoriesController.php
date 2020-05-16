@@ -11,7 +11,9 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        return view('admin.categories.index')->with('categories', Category::all())->with('trashed', false);
+        return view('admin.categories.index')
+        ->with('categories', Category::paginate(10))
+        ->with('trashed', false);
     }
 
     public function create()
@@ -73,7 +75,9 @@ class CategoriesController extends Controller
     }
 
     public function trashed(){
-        return view('admin.categories.index')->with('categories', Category::onlyTrashed()->get())->with('trashed', true);
+        return view('admin.categories.index')
+        ->with('categories', Category::onlyTrashed()->get())
+        ->with('trashed', true);
     }
 
     public function restore($id){
