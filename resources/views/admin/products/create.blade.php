@@ -18,7 +18,7 @@
     <div class="alert alert-danger">
         <ul class="list-group">
             @foreach ($errors->all() as $error)
-            <li class="list-group-item text-danger"><i class="far fa-times-circle"></i> {{ $error }}</li>
+            <li class="list-group-item text-danger mb-1"><i class="far fa-times-circle"></i> {{ $error }}</li>
             @endforeach
         </ul>
     </div>

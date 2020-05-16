@@ -14,7 +14,7 @@ class EditCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:255', \Illuminate\Validation\Rule::unique('categories')->ignore($this->category['id'])]
+            'name' => ['required', 'max:255', 'min:3' , \Illuminate\Validation\Rule::unique('categories')->ignore($this->category['id'])]
         ];
     }
 
