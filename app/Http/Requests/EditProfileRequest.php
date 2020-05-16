@@ -19,4 +19,13 @@ class EditProfileRequest extends FormRequest
             'email' => 'required|unique:users,email,' . auth()->user()->id
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'O campo nome é obrigatório',
+            'email.required' => 'O campo e-mail é obrigatório',
+            'email.unique' => 'E-mail já utilizado, tente outro',
+        ];
+    }
 }
