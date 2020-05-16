@@ -4,11 +4,14 @@
 <h2 class="text-center">Lista de tags</h2>
 
 <div class="d-flex mb-2 justify-content-end">
-    <a href="{{route('tags.create')}}" class="btn btn-success right"><i class="fas fa-plus-circle"></i> Nova</a>
 
     @if(!$trashed)
+    <a href="{{route('tags.create')}}" class="btn btn-success right"><i class="fas fa-plus-circle"></i> Nova</a>
+
     <a href="{{route('trashed-tags.index')}}" class="btn btn-danger right ml-2"><i class="fas fa-recycle"></i>
         Lixeira</a>
+    @else
+    <a href="{{route('tags.index')}}" class="btn btn-info text-white right"><i class="fas fa-chevron-left"></i> Voltar</a>
     @endif
 </div>
 
