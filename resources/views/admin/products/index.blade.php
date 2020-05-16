@@ -4,11 +4,14 @@
 <h2 class="text-center">Lista de produtos</h2>
 
 <div class="d-flex mb-2 justify-content-end">
-    <a href="{{route('products.create')}}" class="btn btn-success right"><i class="fas fa-plus-circle"></i> Nova</a>
 
     @if(!$trashed)
+    <a href="{{route('products.create')}}" class="btn btn-success right"><i class="fas fa-plus-circle"></i> Nova</a>
     <a href="{{route('trashed-product.index')}}" class="btn btn-danger right ml-2"><i class="fas fa-recycle"></i>
         Lixeira</a>
+    @else
+    <a href="{{route('products.index')}}" class="btn btn-info text-white right"><i class="fas fa-chevron-left"></i>
+        Voltar</a>
     @endif
 </div>
 
@@ -84,6 +87,13 @@
                 @endforeach
             </tbody>
         </table>
+
+        @if(!$trashed)
+        <div class="d-flex justify-content-center mt-4 m-auto">
+            {{ $products->links() }}
+        </div>
+        @endif
+
     </div>
 
 </div>

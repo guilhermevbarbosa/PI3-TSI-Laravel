@@ -21,7 +21,7 @@ class ProductsController extends Controller
     public function index()
     {
         return view('admin.products.index')
-        ->with('products', Product::all())
+        ->with('products', Product::paginate(10))
         ->with('trashed', false);
     }
 
@@ -115,7 +115,9 @@ class ProductsController extends Controller
 
     // Retorna apenas os produtos da lixeira do softDeletes
     public function trashed(){
-        return view('admin.products.index')->with('products', Product::onlyTrashed()->get())->with('trashed', true);
+        return view('admin.products.index')
+        ->with('products', Product::onlyTrashed()->get())
+        ->with('trashed', true);
     }
 
     public function restore($id){
