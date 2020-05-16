@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterUserRequest;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,7 +54,17 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ],[
+            'name.required' => 'Campo nome é obrigatório',
+            'email.required' => 'Campo e-mail é obrigatório',
+            'password.required' => 'Campo senha é obrigatório',
+            'max' => 'O campo deve ter no máximo :max caracteres',
+            'min' => 'O campo deve ter no mínimo :min caracteres',
+            'email' => 'Campo :attribute deve ser um e-mail válido',
+            'confirmed' => 'O campo deve ser igual ao de verificação',
+            'unique' => 'O campo tem valor que já está sendo usado, tente outro'
+        ]
+    );
     }
 
     /**
