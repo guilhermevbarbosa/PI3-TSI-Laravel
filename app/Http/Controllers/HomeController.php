@@ -26,17 +26,22 @@ class HomeController extends Controller
 
     // Retorna a view de pesquisa com os produtos da categoria selecionada
     public function searchCategory(Category $category){
-        return view('store.search')->with('products', $category->products()->paginate(2))->with('title', $category->name);
+        return view('store.search')
+        ->with('products', $category->products()->paginate(2))
+        ->with('title', $category->name);
     }
     
     // Retorna a view de pesquisa com os produtos da tag selecionada
     public function searchTag(Tag $tag){
-        return view('store.search')->with('products', $tag->products()->paginate(2))->with('title', $tag->name);
+        return view('store.search')
+        ->with('products', $tag->products()->paginate(2))
+        ->with('title', $tag->name);
     }
 
     // Retorna a view com o produto selecionado
     public function showProduct(Product $product){
-        return view('store.product')->with('product', $product);
+        return view('store.product')
+        ->with('product', $product);
     }
     // FUNÇÕES DA LOJA
 

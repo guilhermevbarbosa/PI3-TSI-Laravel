@@ -73,6 +73,12 @@
                 @endforeach
             </tbody>
         </table>
+
+        @if(!$trashed)
+        <div class="d-flex justify-content-center mt-4 m-auto">
+            {{ $tags->links() }}
+        </div>
+        @endif
     </div>
 
 </div>

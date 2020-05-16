@@ -11,7 +11,10 @@ class TagsController extends Controller
 {
     public function index()
     {
-        return view('admin.tags.index')->with('tags', Tag::all())->with('trashed', false);
+        // trashed false -> Para identificar que essa página não é a de recuperar itens da lixeira
+        return view('admin.tags.index')
+        ->with('tags', Tag::paginate(10))
+        ->with('trashed', false);
     }
 
     public function create()
@@ -73,7 +76,10 @@ class TagsController extends Controller
     }
 
     public function trashed(){
-        return view('admin.tags.index')->with('tags', Tag::onlyTrashed()->get())->with('trashed', true);
+        // trashed true -> Para identificar que essa página é a de recuperar itens da lixeira
+        return view('admin.tags.index')
+        ->with('tags', Tag::onlyTrashed()->get())
+        ->with('trashed', true);
     }
 
     public function restore($id){
