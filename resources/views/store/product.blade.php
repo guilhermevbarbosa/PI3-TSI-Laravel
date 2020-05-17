@@ -35,7 +35,7 @@
             <h5 class="text-muted"> {{ $product->discountPrice() }} </h5>
 
             <div class="text-center mt-5">
-                <a href="#" class="btn btn-primary btn-lg">Comprar</a>
+                <a href="{{ route('cart-store', $product->id) }}" class="btn btn-primary btn-lg">Comprar</a>
             </div>
 
             <div class="text-center mt-5">

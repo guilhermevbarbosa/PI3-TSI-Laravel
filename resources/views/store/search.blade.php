@@ -32,7 +32,7 @@
                         <div class="text-center mt-4">
                             <a href="{{ route('show-product', $product->id) }}" class="btn btn-primary btn-sm mb-3"><i
                                     class="fad fa-eye"></i> Visualizar</a>
-                            <a href="#" class="btn btn-success btn-sm mb-3"><i class="fad fa-shopping-cart"></i>
+                            <a href="{{ route('cart-store', $product->id) }}" class="btn btn-success btn-sm mb-3"><i class="fad fa-shopping-cart"></i>
                                 Comprar</a>
                         </div>
                     </div>

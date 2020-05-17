@@ -20,12 +20,12 @@
     <link href="{{ asset('css/os.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-{{-- 
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 	        OverlayScrollbars(document.querySelectorAll("body"), { });
         });
-    </script> --}}
+    </script>
 
     @yield('javascript')
 </head>
@@ -96,6 +96,10 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{route('user.edit')}}" class="dropdown-item">Perfil</a>
+
+                                @if (Auth::user()->role == 'admin')
+                                <a href="{{route('home')}}" class="dropdown-item">Painel admin</a>
+                                @endif
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
