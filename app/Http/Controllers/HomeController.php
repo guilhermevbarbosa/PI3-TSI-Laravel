@@ -21,7 +21,8 @@ class HomeController extends Controller
         $products = Product::all();
         
         return view('store.home')
-        ->with('featuredProds', $products->sortByDesc('discount')->take(4));
+        ->with('featuredProds', $products->sortByDesc('discount')->take(4))
+        ->with('newProds', $products->sortByDesc('created_at')->take(4));
     }
 
     // Retorna a view de pesquisa com os produtos da categoria selecionada

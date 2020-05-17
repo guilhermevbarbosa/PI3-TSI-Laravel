@@ -24,12 +24,12 @@
 
     .swiper-button-next,
     .swiper-button-prev {
-        color: $orange-nav;
+        color: $primary-color;
         outline: none;
     }
 
     .swiper-pagination-bullet-active {
-        background: $orange-nav;
+        background: $primary-color;
         height: 10px;
         width: 10px;
     }
@@ -72,8 +72,40 @@ b {
 
 .card {
     transition: all 0.2s;
+    border: 0;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    @media (max-width: 767px) {
+        width: 80%;
+        margin: 0 auto;
+    }
 
     &.prod:hover {
         transform: scale(1.05);
     }
+}
+
+.sale-card {
+    i {
+        font-size: 25px;
+        margin-right: 10px;
+        color: $primary-color;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    padding: 20px;
+    background: white;
+    border-left: 5px solid $primary-color;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+}
+
+main {
+    background: #f8f9fa;
 }

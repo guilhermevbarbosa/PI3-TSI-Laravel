@@ -1,0 +1,30 @@
+.product-img {
+    padding: 30px;
+}
+
+.product-details {
+    span {
+        &.discount {
+            color: green;
+            font-weight: bold;
+        }
+
+        &.discount-val {
+            font-weight: 400;
+            color: rgb(168, 166, 166);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+
+    h5 {
+        font-size: 25px;
+    }
+
+    .badge {
+        color: #ffffff;
+        background: $primary-color;
+        padding: 10px;
+    }
+}

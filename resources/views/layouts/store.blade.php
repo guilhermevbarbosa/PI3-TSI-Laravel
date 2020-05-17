@@ -20,12 +20,12 @@
     <link href="{{ asset('css/os.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
+{{-- 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 	        OverlayScrollbars(document.querySelectorAll("body"), { });
         });
-    </script>
+    </script> --}}
 
     @yield('javascript')
 </head>
@@ -35,7 +35,7 @@
 
         <nav class="navbar store fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-white" href="{{ url('/') }}">
                     GVPM Store
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -49,7 +49,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarCategoria" role="button"
+                            <a href="#" class="nav-link dropdown-toggle text-white" id="navbarCategoria" role="button"
                                 data-toggle="dropdown"> Categorias</a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarCategoria">
@@ -61,7 +61,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarTag" role="button"
+                            <a href="#" class="nav-link dropdown-toggle text-white" id="navbarTag" role="button"
                                 data-toggle="dropdown"> Tags</a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarTag">
@@ -89,7 +89,7 @@
 
                         @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
@@ -126,32 +126,10 @@
             @yield('content')
         </main>
 
-        <footer class="container-float bg-footer p-5">
+        <footer class="container-float bg-footer p-4">
             <div class="row">
-                <div class="col-sm-12 col-md-4">
-                    <h2 class="h4">Localização</h2>
-                    <address>
-                        Rua Lorem, ipsum dolor, 386 <br>
-                        Lorem, ipsum - Lorem, LR. <br>
-                        CEP: 0000-000 <br>
-                        Telefone: (11) 8888-8888
-                    </address>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <h2 class="h4">Horário de funcionamento</h2>
-                    <ul class="list-unstyled pl-2">
-                        <li>Segunda - Sexta: 9:00 - 20:00</li>
-                        <li>Sábado: 9:00 - 16:00</li>
-                    </ul>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                    <h2 class="h4">Mapa</h2>
-
-                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=-46.47894322872162%2C-23.547818703515524%2C-46.47186219692231%2C-23.543274664058107&amp;layer=mapnik"
-                        style="border: 1px solid black"></iframe><br /><small><a
-                            href="https://www.openstreetmap.org/#map=18/-23.54555/-46.47540">Ver Mapa
-                            Ampliado</a></small>
+                <div class="col-12">
+                    <span class="text-white">Copyright © 2020 GVPM Store</span>
                 </div>
             </div>
         </footer>

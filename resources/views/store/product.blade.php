@@ -13,33 +13,42 @@
 </header>
 
 
-<div class="row">
-    <div class="col-4 mx-auto text-center">
-        <img src="{{ asset('storage/'.$product->image) }}" class="img-fluid">
+<div class="container pd-size">
+    <div class="row pt-5">
+        <div class="col-md-4 col-sm-12 text-center">
+            <img src="{{ asset('storage/'.$product->image) }}" class="img-fluid product-img">
+        </div>
+
+        <div class="col-md-8 col-sm-12 text-center product-details pt-3 pb-3">
+
+            <h2 class="text-uppercase">{{ $product->name }}</h2>
+            <p class="text-muted">{{$product->description}}</p>
+
+            <span class="discount text-center">
+                {{ $product->discount }}% off
+
+                <span class="discount-val">
+                    {{ $product->formatMoney($product->price) }}
+                </span>
+            </span>
+
+            <h5 class="text-muted"> {{ $product->discountPrice() }} </h5>
+
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary btn-lg">Comprar</a>
+            </div>
+
+            <div class="text-center mt-5">
+                <h3 class="mb-4">Tags</h3>
+                @foreach ($product->tags as $tag)
+                <a href="{{ route('search-tag', $tag->id) }}">
+                    <span class="badge badge-pill">{{ $tag->name }}</span>
+                </a>
+                @endforeach
+            </div>
+        </div>
+
     </div>
-
-    <div class="col-8 mx-auto text-center">
-        <h2 class="text-uppercase">{{ $product->name }}</h2>
-        <p class="text-muted">{{$product->description}}</p>
-        <span class="d-block h6 text-center mt-4">{{ $product->name }}</span>
-
-        <div class="text-center">
-            <span class="text-muted old-price"> {{ $product->formatMoney($product->price) }} </span>
-            <span class="text-muted"> {{ $product->discountPrice() }} </span>
-        </div>
-
-        <div class="text-center mt-3">
-            <a href="#" class="btn btn-primary btn-lg">Comprar</a>
-        </div>
-
-        <div class="text-center mt-5">
-            <h3>Tags</h3>
-            @foreach ($product->tags as $tag)
-            <a href="{{ route('search-tag', $tag->id) }}" class="btn btn-sm btn-secondary">{{ $tag->name }}</a>
-            @endforeach
-        </div>
-    </div>
-
 </div>
 
 
