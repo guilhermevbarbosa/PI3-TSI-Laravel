@@ -8,7 +8,20 @@ use App\Product;
 class CartsController extends Controller
 {
     public function index()
-    {}
+    {
+        $user = auth()->user();
+        $cart = $user->cart;
+
+        if ($cart == null) {
+            // Se usuário não tiver carrinho cria um novo na tabela carts
+            $cart = Cart::updateOrCreate(['user_id' => $user->id]);
+        }
+
+        // products() acessa a classe
+        // products retorna um select
+
+        return view('carts.index')->with('products', $cart->products);
+    }
 
     public function store(Product $product)
     {
