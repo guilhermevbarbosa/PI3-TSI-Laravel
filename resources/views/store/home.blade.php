@@ -10,6 +10,19 @@
 @endsection
 
 @section('content')
+
+@if(session()->has('success'))
+<div class="alert alert-success">
+    <i class="far fa-thumbs-up"></i> {{ session()->get('success') }}
+</div>
+@endif
+
+@if(session()->has('error'))
+<div class="alert alert-danger">
+    <i class="fas fa-times-circle"></i> {{ session()->get('error') }}
+</div>
+@endif
+
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -119,7 +132,8 @@
                     <div class="text-center mt-4">
                         <a href="{{ route('show-product', $product->id) }}" class="btn btn-primary btn-sm mb-3"><i
                                 class="fad fa-eye"></i> Visualizar</a>
-                        <a href="{{ route('cart-store', $product->id) }}" class="btn btn-success btn-sm mb-3"><i class="fad fa-shopping-cart"></i> Comprar</a>
+                        <a href="{{ route('cart-store', $product->id) }}" class="btn btn-success btn-sm mb-3"><i
+                                class="fad fa-shopping-cart"></i> Comprar</a>
                     </div>
                 </div>
             </div>
