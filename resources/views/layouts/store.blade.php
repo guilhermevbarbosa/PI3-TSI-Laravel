@@ -107,6 +107,18 @@
                                 </form>
                             </div>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart') }}">
+                                <i class="fas fa-shopping-cart text-white"></i>
+
+                                @if(Auth::user()->cart->products->count())
+                                <span class="badge badge-pill badge-danger">
+                                    {{ Auth::user()->cart->products->count() }}
+                                </span>
+                                @endif
+                            </a>
+                        </li>
                         @endguest
                         <!-- Authentication Links -->
                     </ul>
