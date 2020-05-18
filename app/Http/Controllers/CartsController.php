@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Product;
+use Illuminate\Support\Facades\DB;
 
 class CartsController extends Controller
 {
@@ -36,6 +37,15 @@ class CartsController extends Controller
         return redirect()->back();
     }
 
-    public function destroy()
-    {}
+    public function destroy(Product $product)
+    {
+        $user = auth()->user();
+        $cart = $user->cart;
+
+        // Query SQL que busca o produto no cart_product que tem o cart_id no valor $cart->id e product_id $product->id e deleta
+        DB::table('cart_product')->where([['cart_id', $cart->id], ['product_id', $product->id]])->delete();
+        session()->flash('success', $product->name . ' removido do carrinho');
+
+        return redirect()->back();
+    }
 }
