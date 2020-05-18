@@ -1,6 +1,8 @@
 @extends('layouts.store')
 
 @section('content')
+
+
 <header>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -11,7 +13,6 @@
         </ol>
     </nav>
 </header>
-
 
 <div class="container pd-size">
     <div class="row pt-5">

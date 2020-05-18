@@ -10,6 +10,7 @@
 // Pages
 @import "home";
 @import "product";
+@import "cart";
 
 body {
     font-family: $font-family;
@@ -118,4 +119,8 @@ hr {
 
 .pd-size {
     min-height: calc(100vh - 60px);
+}
+
+.margin-nav {
+    margin-top: 100px;
 }

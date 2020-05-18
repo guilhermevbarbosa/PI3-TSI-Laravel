@@ -33,7 +33,7 @@
 <body>
     <div id="app">
 
-        <nav class="navbar store fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar store navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
                     GVPM Store
@@ -115,17 +115,19 @@
         </nav>
 
         <main>
-            @if(session()->has('success'))
-            <div class="alert alert-success">
-                <i class="far fa-thumbs-up"></i> {{ session()->get('success') }}
-            </div>
-            @endif
+            <div class="container">
+                @if(session()->has('success'))
+                <div class="alert alert-success mt-2">
+                    <i class="far fa-thumbs-up"></i> {{ session()->get('success') }}
+                </div>
+                @endif
 
-            @if(session()->has('error'))
-            <div class="alert alert-danger">
-                <i class="fas fa-times-circle"></i> {{ session()->get('error') }}
+                @if(session()->has('error'))
+                <div class="alert alert-danger mt-2">
+                    <i class="fas fa-times-circle"></i> {{ session()->get('error') }}
+                </div>
+                @endif
             </div>
-            @endif
 
             @yield('content')
         </main>

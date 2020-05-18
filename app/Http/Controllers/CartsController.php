@@ -32,7 +32,7 @@ class CartsController extends Controller
 
         // Salva o produto passado por parâmetro pelo id na tabela cart_product, utilizando o id do usuário do $cart
         $cart->products()->saveMany([$product]);
-        session()->flash('success', $product->name . 'adicionado ao carrinho');
+        session()->flash('success', $product->name . ' adicionado ao carrinho');
 
         return redirect()->back();
     }

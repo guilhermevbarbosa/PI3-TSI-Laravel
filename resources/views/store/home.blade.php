@@ -11,18 +11,6 @@
 
 @section('content')
 
-@if(session()->has('success'))
-<div class="alert alert-success">
-    <i class="far fa-thumbs-up"></i> {{ session()->get('success') }}
-</div>
-@endif
-
-@if(session()->has('error'))
-<div class="alert alert-danger">
-    <i class="fas fa-times-circle"></i> {{ session()->get('error') }}
-</div>
-@endif
-
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">

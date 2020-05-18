@@ -3,20 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+        <div class="col-12">
+            <h2 class="mt-5">Bem vindo {{ Auth::user()->name }} ao painel administrativo</h2>
+            <p class="mt-4">Navegue pelos menus para</p>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+            <ul class="mt-4">
+                <li>Administrar usuários</li>
+                <li>Administrar tags</li>
+                <li>Administrar produtos</li>
+                <li>Administrar categorias</li>
+            </ul>
         </div>
     </div>
 </div>
