@@ -12,14 +12,16 @@ class CartsController extends Controller
     {
         $user = auth()->user();
         $cart = $user->cart;
-        
-        foreach ($cart as $p) {
-            $products[] = Product::withTrashed()->find($p->product_id);
+
+        if($cart->count() > 0){
+            foreach ($cart as $p) {
+                $products[] = Product::withTrashed()->find($p->product_id);
+            }
+        }else{
+            $products = null;
         }
 
-        $countProd = count($products);
-
-        return view('carts.index')->with('prod', $products)->with('cart_count', $countProd);
+        return view('carts.index')->with('prod', $products);
     }
 
     public function store(Product $product)
