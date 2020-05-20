@@ -12,28 +12,26 @@ class CartsController extends Controller
     {
         $user = auth()->user();
         $cart = $user->cart;
-
-        if ($cart == null) {
-            // Se usuário não tiver carrinho cria um novo na tabela carts
-            $cart = Cart::updateOrCreate(['user_id' => $user->id]);
+        
+        foreach ($cart as $p) {
+            $products[] = Product::withTrashed()->find($p->product_id);
         }
 
-        // products() acessa a classe
-        // products retorna um select
+        $countProd = count($products);
 
-        return view('carts.index')->with('products', $cart->products);
+        return view('carts.index')->with('prod', $products)->with('cart_count', $countProd);
     }
 
     public function store(Product $product)
     {
-        $user = auth()->user();
-        // Se usuário não tiver carrinho cria um novo, ou atualiza o existente na tabela carts
-        $cart = Cart::updateOrCreate(['user_id' => $user->id]);
+        $user = auth()->user()->id;
 
-        // Salva o produto passado por parâmetro pelo id na tabela cart_product, utilizando o id do usuário do $cart
-        $cart->products()->saveMany([$product]);
-        session()->flash('success', $product->name . ' adicionado ao carrinho');
+        Cart::create([
+            'user_id' => $user,
+            'product_id' => $product->id
+        ]);
 
+        session()->flash('success', $product->name . ' adicionado no carrinho');
         return redirect()->back();
     }
 

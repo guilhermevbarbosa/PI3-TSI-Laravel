@@ -26,9 +26,7 @@ class User extends Authenticatable
         return $this->role == 'admin';
     }
 
-    // Cada usuário pode ter 1 carrinho
-    // Retorno do carrinho daquele usuário
     public function cart(){
-        return $this->hasOne(Cart::class);
+        return $this->hasMany(Cart::class);
     }
 }

@@ -112,9 +112,9 @@
                             <a class="nav-link" href="{{ route('cart') }}">
                                 <i class="fas fa-shopping-cart text-white"></i>
 
-                                @if(Auth::user()->cart->products->count())
+                                @if(Auth::user()->cart)
                                 <span class="badge badge-pill badge-danger">
-                                    {{ Auth::user()->cart->products->count() }}
+                                    {{-- {{ Auth::user()->cart->products->count() }} --}}
                                 </span>
                                 @endif
                             </a>

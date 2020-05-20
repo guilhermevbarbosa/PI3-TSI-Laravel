@@ -6,9 +6,8 @@
 
 <section class="container pd-size pt-5 pr-4 pl-4">
 
-    @if($products->count() !== 0)
-
-    @foreach ($products as $product)
+    @if ($cart_count)
+    @foreach ($prod as $product)
     <div class="row">
         <div class="col-12">
 
@@ -26,7 +25,8 @@
     </div>
     @endforeach
 
-    <a href="#" class="btn btn-primary btn-lg float-right shop-btn"><i class="fas fa-shopping-basket"></i> Finalizar compra</a>
+    <a href="#" class="btn btn-primary btn-lg float-right shop-btn"><i class="fas fa-shopping-basket"></i> Finalizar
+        compra</a>
     @else
     <h2 class="mt-5">Ainda não há produtos no carrinho</h2>
     @endif
