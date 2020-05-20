@@ -39,13 +39,14 @@ class CartsController extends Controller
 
     public function destroy(Product $product)
     {
-        $user = auth()->user();
-        $cart = $user->cart;
+        $user = auth()->user()->id;
+    
+        Cart::all()->where('user_id', $user )
+        ->where('product_id', $product->id)
+        ->first()
+        ->delete();
 
-        // Query SQL que busca o produto no cart_product que tem o cart_id no valor $cart->id e product_id $product->id e deleta
-        DB::table('cart_product')->where([['cart_id', $cart->id], ['product_id', $product->id]])->delete();
-        session()->flash('success', $product->name . ' removido do carrinho');
-
+        session()->flash('success', $product->name . ' removido do carrinho com sucesso!');
         return redirect()->back();
     }
 }
