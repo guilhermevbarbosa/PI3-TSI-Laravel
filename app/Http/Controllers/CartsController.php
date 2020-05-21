@@ -68,6 +68,19 @@ class CartsController extends Controller
             return redirect()->back();
         }
 
+        // VERIFICA SE TEM ESTOQUE DOS PRODUTOS DO CARRINHO
+        $orderItens = Cart::all()->where('user_id', $userId);
+        
+        foreach($orderItens as $prod){
+            $actualProd = Product::find($prod->product_id);
+            
+            if($actualProd->stock == 0){
+                session()->flash('error', 'O produto '.$actualProd->name. ' não tem mais estoque, remova-o para continuar a compra');
+                return redirect()->back();
+            }
+        }
+        // VERIFICA SE TEM ESTOQUE DOS PRODUTOS DO CARRINHO
+
         // CRIA O PEDIDO NA TABELA ORDER
         $order = Order::create([
             'user_id' => $userId
