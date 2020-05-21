@@ -148,3 +148,13 @@ hr {
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
     font-weight: bold;
 }
+
+.prod-show {
+    width: 30%;
+    margin: 0 auto;
+    display: block;
+}
+
+input:disabled{
+    background: transparent;
+}

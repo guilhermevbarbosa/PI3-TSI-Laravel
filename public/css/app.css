@@ -11194,3 +11194,13 @@ hr.title {
   font-weight: bold;
 }
 
+.prod-show {
+  width: 30%;
+  margin: 0 auto;
+  display: block;
+}
+
+input:disabled {
+  background: transparent;
+}
+

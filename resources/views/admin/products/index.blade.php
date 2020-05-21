@@ -51,7 +51,7 @@
 
                     @if(!$trashed)
                     <td>
-                        <a href="" class="btn btn-primary btn-sm">
+                        <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary btn-sm">
                             <i class="fas fa-eye">
                             </i>
                         </a>

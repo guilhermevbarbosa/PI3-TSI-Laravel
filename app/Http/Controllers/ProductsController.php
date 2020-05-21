@@ -53,9 +53,12 @@ class ProductsController extends Controller
         return redirect(route('products.index'));
     }
 
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.products.show')
+        ->with('product', $product)
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all());
     }
 
     public function edit(Product $product)
