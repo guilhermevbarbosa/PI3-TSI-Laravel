@@ -45,8 +45,8 @@
                             width="50" height="50"></th>
                     <th scope="row">{{$product->name}}</th>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->discount }}</td>
+                    <td>R$ {{ $product->price }}</td>
+                    <td>{{ $product->discount }}%</td>
                     <td>{{ $product->stock }}</td>
 
                     @if(!$trashed)

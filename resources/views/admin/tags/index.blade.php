@@ -11,7 +11,8 @@
     <a href="{{route('trashed-tags.index')}}" class="btn btn-danger right ml-2"><i class="fas fa-recycle"></i>
         Lixeira</a>
     @else
-    <a href="{{route('tags.index')}}" class="btn btn-info text-white right"><i class="fas fa-chevron-left"></i> Voltar</a>
+    <a href="{{route('tags.index')}}" class="btn btn-info text-white right"><i class="fas fa-chevron-left"></i>
+        Voltar</a>
     @endif
 </div>
 
@@ -24,7 +25,6 @@
                     <th scope="col">Nome</th>
 
                     @if(!$trashed)
-                    <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                     @else
                     <th scope="col">Restaurar</th>
@@ -39,13 +39,6 @@
                     <th scope="row">{{$tag->name}} - ({{$tag->products()->count()}})</th>
 
                     @if(!$trashed)
-                    <td>
-                        <a href="" class="btn btn-primary btn-sm">
-                            <i class="fas fa-eye">
-                            </i>
-                        </a>
-                    </td>
-
                     <td>
                         <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-warning btn-sm"><i
                                 class="fas fa-pen"></i></a>
