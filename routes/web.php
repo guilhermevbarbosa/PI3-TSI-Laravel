@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 
     // ROTAS DE PEDIDO
     Route::get('orders', 'OrdersController@index')->name('orders');
+    Route::get('order/show/{order}', 'OrdersController@show')->name('order.show');
     // ROTAS DE PEDIDO
 });
 // NECESSÁRIO ESTAR APENAS AUTENTICADO

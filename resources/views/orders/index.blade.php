@@ -10,7 +10,7 @@
 
             <thead class="thead-light">
                 <tr class="center">
-                    <th scope="col">Pedido</th>
+                    <th scope="col">N° Pedido</th>
                     <th scope="col">Data</th>
                     <th scope="col">Visualizar</th>
                 </tr>
@@ -25,12 +25,11 @@
                     <th scope="row">{{$order->formatData($order->created_at->timestamp)}}</th>
 
                     <td>
-                        <form action="" method="GET">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-primary">
+                        <a href="{{ route('order.show', $order->id) }}">
+                            <button class="btn btn-sm btn-primary">
                                 <i class="fas fa-eye"></i>
                             </button>
-                        </form>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
