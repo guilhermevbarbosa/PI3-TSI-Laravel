@@ -11170,3 +11170,13 @@ hr.title {
   margin-top: 100px;
 }
 
+.navbar-light .navbar-toggler {
+  border-color: transparent;
+  outline: none;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M0%2C0H24V24H0Z%22%20fill%3D%22none%22/%3E%3Cpath%20d%3D%22M3%2C18H21V16H3Zm0-5H21V11H3ZM3%2C6V8H21V6Z%22%20fill%3D%22%23fff%22/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
