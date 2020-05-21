@@ -22,7 +22,7 @@
                 @foreach ($orders as $order)
                 <tr class="center">
                     <th scope="row">{{$order->id}}</th>
-                    <th scope="row">{{$order->created_at}}</th>
+                    <th scope="row">{{$order->formatData($order->created_at->timestamp)}}</th>
 
                     <td>
                         <form action="" method="GET">
