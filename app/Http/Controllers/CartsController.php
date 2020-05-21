@@ -96,7 +96,7 @@ class CartsController extends Controller
           OrderProduct::create([
               'order_id' => $orderId,
               'product_id' => $actualProd->id,
-              'price' => $actualProd->price
+              'price' => $actualProd->discountPriceOnlyVal()
           ]);
       }
     }
