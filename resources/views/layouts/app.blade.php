@@ -49,6 +49,10 @@
 
                         @auth
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('orders')}}">Meus Pedidos</a>
+                        </li>
+
                         @if(auth()->user()->isAdmin())
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('users.index')}}">Usuários</a>

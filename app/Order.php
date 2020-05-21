@@ -16,7 +16,7 @@ class Order extends Model
     }
 
     // Cada pedido tem produtos
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function orderProducts(){
+        return $this->hasMany(OrderProduct::class);
     }
 }

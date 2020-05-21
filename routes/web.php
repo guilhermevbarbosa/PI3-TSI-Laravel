@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::get('cart/remove/{product}', 'CartsController@destroy')->name('cart-remove');
     Route::post('cart/checkout', 'CartsController@checkout')->name('cart-checkout');
     // ROTAS DE ADICIONAR, EXIBIR E DELETAR DO CARRINHO DO USUÁRIO
+
+    // ROTAS DE PEDIDO
+    Route::get('orders', 'OrdersController@index')->name('orders');
+    // ROTAS DE PEDIDO
 });
 // NECESSÁRIO ESTAR APENAS AUTENTICADO
 
