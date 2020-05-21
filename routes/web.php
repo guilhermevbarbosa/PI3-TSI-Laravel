@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     // ROTAS DE ADICIONAR, EXIBIR E DELETAR DO CARRINHO DO USUÁRIO
     Route::get('cart', 'CartsController@index')->name('cart');
     Route::get('cart/store/{product}', 'CartsController@store')->name('cart-store');
-    Route::get('cart/remove/{product}', 'CartsController@destroy')->name('cart-remove');
+    Route::delete('cart/remove/{product}', 'CartsController@destroy')->name('cart-remove');
     Route::post('cart/checkout', 'CartsController@checkout')->name('cart-checkout');
     // ROTAS DE ADICIONAR, EXIBIR E DELETAR DO CARRINHO DO USUÁRIO
 
