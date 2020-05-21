@@ -72,7 +72,7 @@ class CartsController extends Controller
         $this->deleteDataAfterCheckout($userId);
 
         session()->flash('success', 'Parabéns! Compra finalizada com sucesso!');
-        return redirect()->back();
+        return redirect('/orders');
     }
 
     private function searchAndInsertInOrderProductTable(int $userId, int $orderId){

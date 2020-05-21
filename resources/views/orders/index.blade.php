@@ -6,6 +6,7 @@
 <div>
     <div class="row">
 
+        @if (Auth::user()->orders->count() > 0)
         <table class="table table-striped table-hover">
 
             <thead class="thead-light">
@@ -17,8 +18,6 @@
             </thead>
 
             <tbody>
-
-                @if (Auth::user()->orders)
                 @foreach ($orders as $order)
                 <tr class="center">
                     <th scope="row">{{$order->id}}</th>
@@ -33,12 +32,12 @@
                     </td>
                 </tr>
                 @endforeach
-                @else
-                <h4 class="mt-5">Ainda não há pedidos realizados</h4>
-                @endif
             </tbody>
-
         </table>
+
+        @else
+        <h4 class="mt-5">Ainda não há pedidos realizados</h4>
+        @endif
     </div>
 
 </div>
