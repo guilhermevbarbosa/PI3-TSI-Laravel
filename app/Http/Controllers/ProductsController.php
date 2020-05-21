@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Category;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
+use App\OrderProduct;
 use App\Product;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -100,6 +102,17 @@ class ProductsController extends Controller
 
         // Se o produto está na lixeira, deleta a imagem do storage e exclui o produto do banco
         if($product->trashed()){
+
+            if(Cart::all()->where('product_id', $id)->count() > 0){
+                session()->flash('error', 'O produto não pode ser excluído definitivamente pois ele está no carrinho de clientes');
+                return redirect()->back();
+            }
+            
+            if(OrderProduct::all()->where('product_id', $id)->count() > 0){
+                session()->flash('error', 'O produto não pode ser excluído definitivamente pois ele faz parte de pedido de clientes');
+                return redirect()->back();
+            }
+
             Storage::delete($product->image);
             $product->forceDelete();
 
