@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Order;
+use App\OrderProduct;
 use App\Product;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +16,8 @@ class CartsController extends Controller
         $cart = $user->cart;
 
         if($cart->count() > 0){
-            foreach ($cart as $p) {
-                $products[] = Product::withTrashed()->find($p->product_id);
+            foreach ($cart as $product) {
+                $products[] = Product::withTrashed()->find($product->product_id);
             }
         }else{
             $products = null;
@@ -48,5 +50,54 @@ class CartsController extends Controller
 
         session()->flash('success', $product->name . ' removido do carrinho com sucesso!');
         return redirect()->back();
+    }
+
+    public function checkout(){
+        $userId = auth()->user()->id;
+
+        if(auth()->user()->cart->count() < 1){
+            session()->flash('error', 'Não é possível finalizar compra sem itens');
+            return redirect()->back();
+        }
+
+        // CRIA O PEDIDO NA TABELA ORDER
+        $order = Order::create([
+            'user_id' => $userId
+        ]);
+
+        // PESQUISA NA TABELA DE PRODUTOS E INSERE NA TABELA ORDER_PRODUCT
+        $this->searchAndInsertInOrderProductTable($userId, $order->id);
+
+        // REMOVE PRODUTOS DO CARRINHO
+        $this->deleteDataAfterCheckout($userId);
+
+        session()->flash('success', 'Parabéns! Compra finalizada com sucesso!');
+        return redirect()->back();
+    }
+
+    private function searchAndInsertInOrderProductTable(int $userId, int $orderId){
+      // PROCURA OS PRODUTOS QUE PERTENCEM AO USUÁRIO PELO ID DENTRO DO CARRINHO
+      $orderItens = Cart::all()->where('user_id', $userId);
+
+      // PARA CADA PRODUTO, PROCURA NOS PRODUTOS PELO ID E GUARDA NA TABELA PIVÔ
+      // O RESULTADO DO PRODUTO E O ID GERADO NA CRIAÇÃO DO PEDIDO
+      foreach($orderItens as $prod){
+          $actualProd = Product::find($prod->product_id);
+
+          OrderProduct::create([
+              'order_id' => $orderId,
+              'product_id' => $actualProd->id,
+              'price' => $actualProd->price
+          ]);
+      }
+    }
+
+    private function deleteDataAfterCheckout(int $userId){
+        // REMOVE OS PRODUTOS DO CARRINHO DO CLIENTE
+        $prodsToRemove = Cart::all()->where('user_id', $userId);
+
+        foreach($prodsToRemove as $actualProd){
+            $actualProd->delete();
+        }
     }
 }

@@ -8,7 +8,7 @@ class OrderProduct extends Model
 {
     // PIVOT TABLE - PRODUTOS DO PEDIDO
 
-    private $fillable = [
+    protected $fillable = [
         'order_id',
         'product_id',
         'price'

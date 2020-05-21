@@ -23,9 +23,15 @@
         </div>
     </div>
     @endforeach
+    
+    <form action="{{ route('cart-checkout') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-primary btn-lg float-right shop-btn">
+            <i class="fas fa-shopping-basket"></i>
+            Finalizar compra
+        </button>
+    </form>
 
-    <a href="#" class="btn btn-primary btn-lg float-right shop-btn"><i class="fas fa-shopping-basket"></i> Finalizar
-        compra</a>
     @else
     <h4 class="mt-5">Ainda não há produtos no carrinho</h4>
     @endif
