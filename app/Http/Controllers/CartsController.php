@@ -14,16 +14,25 @@ class CartsController extends Controller
     {
         $user = auth()->user();
         $cart = $user->cart;
+        $totalPrice = 0;
 
         if($cart->count() > 0){
             foreach ($cart as $product) {
-                $products[] = Product::withTrashed()->find($product->product_id);
+                $forProd = Product::withTrashed()->find($product->product_id);
+
+                $totalPrice += $forProd->discountPriceOnlyVal();
+                $products[] = $forProd;
             }
+
+            $totalPrice = number_format($totalPrice, 2, ',', '');
         }else{
             $products = null;
+            $totalPrice = null;
         }
 
-        return view('carts.index')->with('prod', $products);
+        return view('carts.index')
+        ->with('prod', $products)
+        ->with('totalPrice', $totalPrice);
     }
 
     public function store(Product $product)

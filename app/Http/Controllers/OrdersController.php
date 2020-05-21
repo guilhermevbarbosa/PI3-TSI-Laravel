@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-    public function getUserOrders(int $id){
+    private function getUserOrders(int $id){
         return Order::all()->where('user_id', $id);
     }
 
-    public function getOrderProducts(int $id){
+    private function getOrderProducts(int $id){
         return OrderProduct::all()->where('order_id', $id);
     }
 

@@ -23,7 +23,12 @@
         </div>
     </div>
     @endforeach
-    
+
+    <div class="total-price">
+        Total <br>
+        R$ {{ $totalPrice }}
+    </div>
+
     <form action="{{ route('cart-checkout') }}" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary btn-lg float-right shop-btn">

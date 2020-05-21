@@ -27,11 +27,23 @@ class Product extends Model
         return in_array($tagID, $this->tags->pluck('id')->toArray());
     }
 
+    // VALOR COM DESCONTO COM R$
     public function formatMoney($value){
         return 'R$'.number_format($value, 2);
     }
-
+    
     public function discountPrice(){
         return $this->formatMoney($this->price * (1 - $this->discount / 100));
     }
+    // VALOR COM DESCONTO COM R$
+
+    // VALOR COM DESCONTO SEM O R$
+    public function formatMoneyOnlyVal($value){
+        return number_format($value, 2);
+    }
+    
+    public function discountPriceOnlyVal(){
+        return $this->formatMoneyOnlyVal($this->price * (1 - $this->discount / 100));
+    }
+    // VALOR COM DESCONTO SEM O R$
 }
