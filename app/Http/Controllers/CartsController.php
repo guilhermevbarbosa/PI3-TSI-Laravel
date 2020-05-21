@@ -6,7 +6,6 @@ use App\Cart;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
-use Illuminate\Support\Facades\DB;
 
 class CartsController extends Controller
 {
@@ -74,7 +73,7 @@ class CartsController extends Controller
             'user_id' => $userId
         ]);
 
-        // PESQUISA NA TABELA DE PRODUTOS E INSERE NA TABELA ORDER_PRODUCT
+        // PESQUISA NA TABELA DO CARRINHO OS PRODUTOS E INSERE NA TABELA ORDER_PRODUCT
         $this->searchAndInsertInOrderProductTable($userId, $order->id);
 
         // REMOVE PRODUTOS DO CARRINHO
@@ -85,19 +84,27 @@ class CartsController extends Controller
     }
 
     private function searchAndInsertInOrderProductTable(int $userId, int $orderId){
-      // PROCURA OS PRODUTOS QUE PERTENCEM AO USUÁRIO PELO ID DENTRO DO CARRINHO
+      // PEGA OS PRODUTOS DO CARRINHO DO USUÁRIO
       $orderItens = Cart::all()->where('user_id', $userId);
 
-      // PARA CADA PRODUTO, PROCURA NOS PRODUTOS PELO ID E GUARDA NA TABELA PIVÔ
-      // O RESULTADO DO PRODUTO E O ID GERADO NA CRIAÇÃO DO PEDIDO
       foreach($orderItens as $prod){
           $actualProd = Product::find($prod->product_id);
 
+        // CRIA O REGISTRO NA TABELA ORDER_PRODUCT
           OrderProduct::create([
               'order_id' => $orderId,
               'product_id' => $actualProd->id,
               'price' => $actualProd->discountPriceOnlyVal()
           ]);
+
+        // REMOVE DO ESTOQUE O PRODUTO
+        $stock = $actualProd->stock;
+        $stock--;
+        
+        $actualProd->update([
+            'stock' => $stock
+        ]);
+        // REMOVE DO ESTOQUE O PRODUTO
       }
     }
 
