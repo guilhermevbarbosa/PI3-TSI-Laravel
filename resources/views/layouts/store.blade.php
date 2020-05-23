@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -78,12 +78,12 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastrar') }}</a>
+                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Cadastrar') }}</a>
                         </li>
                         @endif
 
