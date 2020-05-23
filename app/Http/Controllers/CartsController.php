@@ -112,7 +112,10 @@ class CartsController extends Controller
 
         // REMOVE DO ESTOQUE O PRODUTO
         $stock = $actualProd->stock;
-        $stock--;
+
+        if($stock > 0){
+            $stock--;
+        }
         
         $actualProd->update([
             'stock' => $stock
