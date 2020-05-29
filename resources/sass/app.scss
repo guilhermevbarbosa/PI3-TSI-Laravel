@@ -165,11 +165,34 @@ input:disabled {
     border-bottom-right-radius: 5px;
     outline: none;
 
-    &:focus{
+    &:focus {
         outline: none;
     }
 }
 
-.search-space{
+.search-space {
     width: 80%;
+}
+
+.search-input {
+    background: transparent;
+    color: #ffffff;
+
+    &:focus{
+        color: #ffffff;
+        background: transparent;
+    }
+
+    &::placeholder {
+        color: #ffffff;
+        opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+        color: #ffffff;
+    }
+
+    &::-ms-input-placeholder {
+        color: #ffffff;
+    }
 }

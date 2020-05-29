@@ -9,8 +9,8 @@
             <hr class="title">
         </div>
 
-        <div class="row mx-auto">
-            @foreach ($products as $product)
+        <div class="row">
+            @forelse ($products as $product)
             <div class="col-sm-6 col-md-6 col-lg-3 col-12">
                 <div class="card prod mb-3">
                     <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top img-fluid img-store"
@@ -40,12 +40,18 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+
+            @empty
+            <h3 class="text-center">Não há produtos relacionados a {{request()->query('s')}}</h3>
+            @endforelse
         </div>
 
-        <div class="d-flex justify-content-center mt-4 m-auto">
-            {{ $products->links() }}
+        <div class="row">
+            <div class="d-flex justify-content-center mt-4 m-auto">
+                {{ $products->appends(['s' => request()->query('s')])->links() }}
+            </div>
         </div>
+
     </div>
 </section>
 @endsection

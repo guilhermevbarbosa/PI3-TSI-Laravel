@@ -75,7 +75,7 @@
 
                     <form class="form-group m-0 w-50" action="{{ route('search-product') }}">
                         <div class="input-group search-space">
-                            <input type="text" class="form-control" placeholder="Busque por um produto : )" name="s">
+                            <input type="text" class="form-control search-input" placeholder="Busque por um produto : )" name="s">
                             <div class="input-group-append">
                                 <button class="search-btn" type="submit">Buscar <i class="fas fa-search"></i></button>
                             </div>

@@ -11192,3 +11192,46 @@ input:disabled {
   width: 80%;
 }
 
+.search-input {
+  background: transparent;
+  color: #ffffff;
+}
+
+.search-input:focus {
+  color: #ffffff;
+  background: transparent;
+}
+
+.search-input::-webkit-input-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-input::-moz-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-input:-ms-input-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-input::-ms-input-placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-input::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.search-input:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+.search-input::-ms-input-placeholder {
+  color: #ffffff;
+}
+
