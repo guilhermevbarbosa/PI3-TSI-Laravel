@@ -34,7 +34,7 @@
     <div id="app">
 
         <nav class="navbar store navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
                     GVPM Store
                 </a>
@@ -72,6 +72,15 @@
                         </li>
                     </ul>
                     <!-- Left Side Of Navbar -->
+
+                    <form class="form-group m-0 w-50" action="{{ route('search-product') }}">
+                        <div class="input-group search-space">
+                            <input type="text" class="form-control" placeholder="Busque por um produto : )" name="s">
+                            <div class="input-group-append">
+                                <button class="search-btn" type="submit">Buscar <i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -11177,3 +11177,18 @@ input:disabled {
   background: transparent;
 }
 
+.search-btn {
+  border: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  outline: none;
+}
+
+.search-btn:focus {
+  outline: none;
+}
+
+.search-space {
+  width: 80%;
+}
+

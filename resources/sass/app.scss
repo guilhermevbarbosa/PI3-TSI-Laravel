@@ -155,6 +155,21 @@ hr {
     display: block;
 }
 
-input:disabled{
+input:disabled {
     background: transparent;
+}
+
+.search-btn {
+    border: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    outline: none;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.search-space{
+    width: 80%;
 }
