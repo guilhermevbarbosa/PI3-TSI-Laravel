@@ -41,7 +41,11 @@
         </div>
 
         @empty
-        <h3 class="text-center">Não há produtos relacionados a {{request()->query('s')}}</h3>
+        <div class="err-space">
+            <i class="far fa-frown"></i>
+            <h3 class="text-center">Não há produtos relacionados a <b>{{request()->query('s')}}</b></h3>
+        </div>
+
         @endforelse
 
         <div class="row">
