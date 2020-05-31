@@ -11,7 +11,8 @@ class OrderProduct extends Model
     protected $fillable = [
         'order_id',
         'product_id',
-        'price'
+        'price',
+        'amount'
     ];
 
     // Cada item pertence a um pedido

@@ -83,11 +83,6 @@ class CartsController extends Controller
     public function checkout(){
         $userId = auth()->user()->id;
 
-        if(auth()->user()->cart->count() < 1){
-            session()->flash('error', 'Não é possível finalizar compra sem itens');
-            return redirect()->back();
-        }
-
         // VERIFICA SE TEM ESTOQUE DOS PRODUTOS DO CARRINHO
         $orderItens = Cart::all()->where('user_id', $userId);
 
@@ -127,14 +122,15 @@ class CartsController extends Controller
           OrderProduct::create([
               'order_id' => $orderId,
               'product_id' => $actualProd->id,
-              'price' => $actualProd->discountPriceOnlyVal()
+              'price' => $actualProd->discountPriceOnlyVal() * $prod->amount,
+              'amount' => $prod->amount
           ]);
 
         // REMOVE DO ESTOQUE O PRODUTO
         $stock = $actualProd->stock;
 
         if($stock > 0){
-            $stock--;
+            $stock -= $prod->amount;
         }
 
         $actualProd->update([
