@@ -53,10 +53,16 @@
                                 data-toggle="dropdown"> Categorias</a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarCategoria">
+
                                 @foreach (\App\Category::all() as $category)
+
+                                @if ($category->products->count())
                                 <a class="dropdown-item"
                                     href="{{ route('search-category', $category->id) }}">{{ $category->name }}</a>
+                                @endif
+
                                 @endforeach
+
                             </div>
                         </li>
 
@@ -66,7 +72,11 @@
 
                             <div class="dropdown-menu" aria-labelledby="navbarTag">
                                 @foreach (\App\Tag::all() as $tag)
+
+                                @if ($tag->products->count())
                                 <a class="dropdown-item" href="{{ route('search-tag', $tag->id) }}">{{ $tag->name }}</a>
+                                @endif
+
                                 @endforeach
                             </div>
                         </li>
@@ -75,7 +85,8 @@
 
                     <form class="form-group m-0 w-50" action="{{ route('search-product') }}">
                         <div class="input-group search-space">
-                            <input type="text" class="form-control search-input" placeholder="Busque por um produto : )" name="s">
+                            <input type="text" class="form-control search-input" placeholder="Busque por um produto : )"
+                                name="s">
                             <div class="input-group-append">
                                 <button class="search-btn" type="submit">Buscar <i class="fas fa-search"></i></button>
                             </div>
