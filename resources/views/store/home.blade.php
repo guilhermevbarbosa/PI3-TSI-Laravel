@@ -79,13 +79,13 @@
     </div>
 
     <div class="row mt-5">
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 mb-3">
             <div class="sale-card">
                 <i class="fas fa-gifts"></i> Os melhores produtos você encontra aqui!
             </div>
         </div>
 
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 mb-3">
             <div class="sale-card">
                 <i class="fas fa-dollar-sign"></i> Aproveite os descontos especiais
             </div>
