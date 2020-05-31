@@ -105,6 +105,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{route('user.edit')}}" class="dropdown-item">Perfil</a>
+                                <a href="{{route('address.index')}}" class="dropdown-item">Endereço</a>
 
                                 @if (Auth::user()->role == 'admin')
                                 <a href="{{route('home')}}" class="dropdown-item">Painel admin</a>

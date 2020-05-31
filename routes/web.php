@@ -22,6 +22,7 @@ Route::get('search/product', 'HomeController@searchBarFindProduct')->name('searc
 Route::middleware('auth')->group(function () {
     Route::get('users/profile', 'UsersController@edit')->name('user.edit');
     Route::put('users/profile', 'UsersController@update')->name('users.update');
+    Route::resource('address', 'AddressController');
 
     // ROTAS DE ADICIONAR, EXIBIR, DELETAR E CHECKOUT DO CARRINHO DO USUÁRIO
     Route::get('cart/store/{product}', 'CartsController@store')->name('cart-store');

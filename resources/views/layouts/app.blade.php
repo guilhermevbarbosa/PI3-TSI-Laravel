@@ -91,6 +91,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a href="{{route('user.edit')}}" class="dropdown-item">Perfil</a>
+                                <a href="{{route('address.index')}}" class="dropdown-item">Endereço</a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                     @csrf
