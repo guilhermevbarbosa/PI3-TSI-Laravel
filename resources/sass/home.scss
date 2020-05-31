@@ -1,23 +1,22 @@
 .swiper-container {
     .swiper-slide {
         img {
-            min-height: 400px;
-            height: 225px;
+            min-height: 300px;
             width: 100%;
             background-position: center !important;
             background-size: cover !important;
             background-repeat: no-repeat !important;
 
             &.first {
-                background: url("https://via.placeholder.com/1080x400/FEFEFE");
+                background: url("public/img/banner1.jpg");
             }
 
             &.second {
-                background: url("https://via.placeholder.com/1080x400/dc4e4e");
+                background: url("public/img/banner2.jpg");
             }
 
             &.third {
-                background: url("https://via.placeholder.com/1080x400/179636");
+                background: url("public/img/banner3.jpg");
             }
         }
     }

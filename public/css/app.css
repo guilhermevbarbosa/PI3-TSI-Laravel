@@ -10878,8 +10878,7 @@ a.text-dark:focus {
 }
 
 .swiper-container .swiper-slide img {
-  min-height: 400px;
-  height: 225px;
+  min-height: 300px;
   width: 100%;
   background-position: center !important;
   background-size: cover !important;
@@ -10887,15 +10886,15 @@ a.text-dark:focus {
 }
 
 .swiper-container .swiper-slide img.first {
-  background: url("https://via.placeholder.com/1080x400/FEFEFE");
+  background: url(/images/banner1.jpg?c6ed6cb7888177a223aa04d4e929b4d8);
 }
 
 .swiper-container .swiper-slide img.second {
-  background: url("https://via.placeholder.com/1080x400/dc4e4e");
+  background: url(/images/banner2.jpg?21c717cecc909f4bd5837ac2bf88951b);
 }
 
 .swiper-container .swiper-slide img.third {
-  background: url("https://via.placeholder.com/1080x400/179636");
+  background: url(/images/banner3.jpg?9d6831e3452e86f02243aace39c1bd41);
 }
 
 .swiper-container .swiper-button-next,
