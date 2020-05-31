@@ -1,4 +1,10 @@
 @extends('layouts.app')
+
+@section('javascript')
+<script src="{{ asset('js/jquery.mask.min.js') }}" defer></script>
+<script src="{{ asset('js/cep.js') }}" defer></script>
+@endsection
+
 @section('content')
 <h2 class="text-center">Adicionar endereço</h2>
 
@@ -19,12 +25,16 @@
     <div class="card">
         <div class="card-body">
             <div class="label-float mb-5">
-                <input name="cep" type="text" placeholder=" " value="{{ old('cep') }}" />
+                <input oninput="getCep(this.value)" name="cep" type="text" placeholder=" " class="cep"
+                    value="{{ old('cep') }}" />
                 <label>CEP</label>
+
+                <small id="error-cep" style="color: red; display: none">CEP inválido</small>
             </div>
 
+
             <div class="label-float mb-5">
-                <input name="h_address" type="text" placeholder=" " value="{{ old('h_address') }}" />
+                <input name="h_address" id="address" type="text" placeholder=" " value="{{ old('h_address') }}" />
                 <label>Endereço</label>
             </div>
 
@@ -34,17 +44,17 @@
             </div>
 
             <div class="label-float mb-5">
-                <input name="neighborhood" type="text" placeholder=" " value="{{ old('neighborhood') }}" />
+                <input name="neighborhood" id="neig" type="text" placeholder=" " value="{{ old('neighborhood') }}" />
                 <label>Bairro</label>
             </div>
 
             <div class="label-float mb-5">
-                <input name="city" type="text" placeholder=" " value="{{ old('city') }}" />
+                <input name="city" id="city" type="text" placeholder=" " value="{{ old('city') }}" />
                 <label>Cidade</label>
             </div>
 
             <div class="label-float mb-5">
-                <input name="state" type="text" placeholder=" " value="{{ old('state') }}" />
+                <input name="state" id="state" type="text" placeholder=" " value="{{ old('state') }}" />
                 <label>Estado</label>
             </div>
 
