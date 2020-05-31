@@ -38,10 +38,24 @@ class CartsController extends Controller
     {
         $user = auth()->user()->id;
 
-        Cart::create([
-            'user_id' => $user,
-            'product_id' => $product->id
-        ]);
+        $consulta = Cart::all()
+        ->where('user_id', $user)
+        ->where('product_id', $product->id)
+        ->first();
+
+        if($consulta){
+            $actualAmount = $consulta->amount;
+
+            $consulta->update([
+                'amount' => $actualAmount + 1
+            ]);
+        }else{
+            Cart::create([
+                'user_id' => $user,
+                'product_id' => $product->id,
+                'amount' => 1
+            ]);
+        }
 
         session()->flash('success', $product->name . ' adicionado no carrinho');
         return redirect()->back();
@@ -50,7 +64,7 @@ class CartsController extends Controller
     public function destroy(Product $product)
     {
         $user = auth()->user()->id;
-    
+
         Cart::all()->where('user_id', $user )
         ->where('product_id', $product->id)
         ->first()
@@ -70,10 +84,10 @@ class CartsController extends Controller
 
         // VERIFICA SE TEM ESTOQUE DOS PRODUTOS DO CARRINHO
         $orderItens = Cart::all()->where('user_id', $userId);
-        
+
         foreach($orderItens as $prod){
             $actualProd = Product::find($prod->product_id);
-            
+
             if($actualProd->stock == 0){
                 session()->flash('error', 'O produto '.$actualProd->name. ' não tem mais estoque, remova-o para continuar a compra');
                 return redirect()->back();
@@ -116,7 +130,7 @@ class CartsController extends Controller
         if($stock > 0){
             $stock--;
         }
-        
+
         $actualProd->update([
             'stock' => $stock
         ]);

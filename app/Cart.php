@@ -8,7 +8,8 @@ class Cart extends Model
 {
     protected $fillable = [
         'user_id',
-        'product_id'
+        'product_id',
+        'amount'
     ];
 
     // Cada carrinho pode ter 1 usuário
