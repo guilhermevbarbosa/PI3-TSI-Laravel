@@ -11045,6 +11045,18 @@ main {
   font-size: 14px;
 }
 
+.required-end {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+  display: block;
+}
+
+.required-end i {
+  color: red;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden !important;

@@ -57,6 +57,7 @@
         R$ {{ $totalPrice }}
     </div>
 
+    @if (Auth::user()->address != null)
     <form action="{{ route('cart-checkout') }}" method="POST">
         @csrf
         <button type="submit" class="btn btn-primary btn-lg float-right shop-btn">
@@ -64,6 +65,9 @@
             Finalizar compra
         </button>
     </form>
+    @else
+    <span class="required-end mt-2"><i class="fas fa-exclamation-triangle"></i> Cadastre um endereço para finalizar sua compra</span>
+    @endif
 
     @else
     <h4 class="mt-5">Ainda não há produtos no carrinho</h4>
