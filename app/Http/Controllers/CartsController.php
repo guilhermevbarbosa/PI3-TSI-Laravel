@@ -65,10 +65,20 @@ class CartsController extends Controller
     {
         $user = auth()->user()->id;
 
-        Cart::all()->where('user_id', $user )
+        $consulta = Cart::all()
+        ->where('user_id', $user )
         ->where('product_id', $product->id)
-        ->first()
-        ->delete();
+        ->first();
+
+        if($consulta->amount > 1){
+            $actualAmount = $consulta->amount;
+
+            $consulta->update([
+                'amount' => $actualAmount - 1
+            ]);
+        }else {
+            $consulta->delete();
+        }
 
         session()->flash('success', $product->name . ' removido do carrinho com sucesso!');
         return redirect()->back();
