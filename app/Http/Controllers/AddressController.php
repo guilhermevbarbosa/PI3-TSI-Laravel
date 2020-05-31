@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Http\Requests\AddressRequest;
 use Illuminate\Http\Request;
 
@@ -21,51 +22,38 @@ class AddressController extends Controller
 
     public function store(AddressRequest $request)
     {
-        dd($request);
+        $user = auth()->user();
+
+        Address::create([
+            'cep'=>$request->cep,
+            'h_address'=>$request->h_address,
+            'h_number'=>$request->h_number,
+            'neighborhood'=>$request->neighborhood,
+            'city'=>$request->city,
+            'state'=>$request->state,
+            'user_id'=>$user->id
+        ]);
+
+        session()->flash('success', 'Dados atualizados com sucesso!');
+        return redirect('home-store');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function update(AddressRequest $request)
     {
-        //
+        $user = auth()->user();
+        $address = $user->address;
+
+        $address->update([
+            'cep'=>$request->cep,
+            'h_address'=>$request->h_address,
+            'h_number'=>$request->h_number,
+            'neighborhood'=>$request->neighborhood,
+            'city'=>$request->city,
+            'state'=>$request->state,
+        ]);
+
+        session()->flash('success', 'Dados atualizados com sucesso!');
+        return redirect('home-store');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

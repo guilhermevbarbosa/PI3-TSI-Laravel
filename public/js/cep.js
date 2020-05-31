@@ -19,8 +19,10 @@ function fetchCepData(cep) {
 
             if (cepResponse.erro) {
                 $("#error-cep").css("display", "block");
+                $("#save").attr("disabled", "disabled");
             } else {
                 $("#error-cep").css("display", "none");
+                $("#save").removeAttr("disabled");
 
                 $("#address").val(cepResponse.logradouro);
                 $("#neig").val(cepResponse.bairro);

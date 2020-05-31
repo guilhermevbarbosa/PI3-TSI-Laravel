@@ -58,7 +58,7 @@
                 <label>Estado</label>
             </div>
 
-            <button type="submit" class="btn btn-success mt-4 float-right">Salvar</button>
+            <button id="save" type="submit" class="btn btn-success mt-4 float-right">Salvar</button>
         </div>
     </div>
 </form>

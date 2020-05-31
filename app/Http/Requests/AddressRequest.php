@@ -14,7 +14,7 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'cep'=>'required|max:255|min:3',
+            'cep'=>'required|max:9|min:8',
             'h_address'=>'required|max:255|min:3',
             'h_number'=>'required',
             'neighborhood'=>'required|max:255|min:3',
