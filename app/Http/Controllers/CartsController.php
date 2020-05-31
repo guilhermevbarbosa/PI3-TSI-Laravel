@@ -19,19 +19,15 @@ class CartsController extends Controller
             foreach ($cart as $product) {
                 $forProd = Product::withTrashed()->find($product->product_id);
 
-                $totalPrice += $forProd->discountPriceOnlyVal();
                 $products[] = $forProd;
             }
-
-            $totalPrice = number_format($totalPrice, 2, ',', '');
         }else{
             $products = null;
             $totalPrice = null;
         }
 
         return view('carts.index')
-        ->with('prod', $products)
-        ->with('totalPrice', $totalPrice);
+        ->with('prod', $products);
     }
 
     public function store(Product $product)

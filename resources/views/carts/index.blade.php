@@ -26,7 +26,6 @@
                     $totalPriceCount = 0;
                 ?>
 
-
                 <tbody>
                     @foreach ($prod as $product)
 
@@ -36,7 +35,6 @@
                                 ->first()->amount;
 
                         $prodAllPrice = $product->discountPriceOnlyVal() * $amount;
-
                         $totalPriceCount += $prodAllPrice;
                     ?>
 
