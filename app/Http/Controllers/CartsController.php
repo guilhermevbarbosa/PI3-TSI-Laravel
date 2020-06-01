@@ -141,6 +141,14 @@ class CartsController extends Controller
         }
     }
 
+    public function removeAllCart(){
+        $user = auth()->user()->id;
+        $this->deleteDataAfterCheckout($user);
+
+        session()->flash('success', 'O carrinho foi limpo');
+        return redirect()->back();
+    }
+
     private function deleteDataAfterCheckout(int $userId)
     {
         // REMOVE OS PRODUTOS DO CARRINHO DO CLIENTE

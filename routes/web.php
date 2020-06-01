@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('cart/store/{product}', 'CartsController@store')->name('cart-store');
     Route::get('cart', 'CartsController@index')->name('cart');
     Route::delete('cart/remove/{product}', 'CartsController@destroy')->name('cart-remove');
+    Route::delete('cart/remove-all', 'CartsController@removeAllCart')->name('cart-remove-all');
     Route::post('cart/checkout', 'CartsController@checkout')->name('cart-checkout');
     // ROTAS DE ADICIONAR, EXIBIR, DELETAR E CHECKOUT DO CARRINHO DO USUÁRIO
 

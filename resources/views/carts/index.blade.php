@@ -82,13 +82,23 @@
     </div>
 
     @if (Auth::user()->address != null)
-    <form action="{{ route('cart-checkout') }}" method="POST">
+    <form action="{{ route('cart-checkout') }}" method="POST" onsubmit="return confirm('Deseja finalizar a compra?')">
         @csrf
         <button type="submit" class="btn btn-primary btn-lg float-right shop-btn">
             <i class="fas fa-shopping-basket"></i>
             Finalizar compra
         </button>
     </form>
+
+    <form action="{{ route('cart-remove-all') }}" method="POST" onsubmit="return confirm('Deseja limpar o carrinho?')">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger btn-lg float-left shop-btn d-block mb-4">
+            <i class="far fa-trash-alt"></i>
+            Limpar o carrinho
+        </button>
+    </form>
+
     @else
     <span class="required-end mt-2"><i class="fas fa-exclamation-triangle"></i> Cadastre um endereço para finalizar sua
         compra</span>
