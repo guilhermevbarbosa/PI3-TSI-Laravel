@@ -12,6 +12,7 @@
                 <tr class="center">
                     <th scope="col">Imagem</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Quantidade</th>
                     <th scope="col">Preço</th>
                 </tr>
             </thead>
@@ -25,6 +26,9 @@
                     </th>
                     <th scope="row">
                         {{$products[$i]->name}}
+                    </th>
+                    <th scope="row">
+                        {{$amount[$i]}}
                     </th>
                     <th scope="row">
                         R$ {{$price[$i]}}

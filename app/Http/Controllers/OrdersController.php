@@ -26,18 +26,29 @@ class OrdersController extends Controller
 
     public function show(Order $order){
 
+        // Pega os produtos do pedido
         $orderProducts = $this->getOrderProducts($order->id);
 
+        // Soma os valores dos produtos do pedido
         $totalPrice = number_format($orderProducts->sum('price'), 2, ',', '');
 
         foreach($orderProducts as $product){
-            $clientProds[] = Product::withTrashed()->find($product->product_id); 
+            // Pega o produto completo contido em Product
+            $clientProds[] = Product::withTrashed()->find($product->product_id);
+
+            // Pega o preço contido em OrderProduct
             $priceDB[] = $product->price;
+            // Pega a quantidade contida em OrderProduct
+            $amountDB[] = $product->amount;
         }
 
+        // Retorno - Array de todos os produtos / Array de preços de order_products /
+        // Array de produtos de order_products / Preço total de todos os itens do pedido de order_products
+        // Pega o ID da ordem / Pega a data do pedido por timestamp e formata
         return view('orders.show')
         ->with('products', $clientProds)
         ->with('price', $priceDB)
+        ->with('amount', $amountDB)
         ->with('totalPrice', $totalPrice)
         ->with('orderNumb', $order->id)
         ->with('orderDate', $order->formatData($order->created_at->timestamp));
