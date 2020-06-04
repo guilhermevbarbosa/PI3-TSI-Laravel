@@ -34,9 +34,9 @@
                 <label>Nome</label>
             </div>
 
-            <div class="label-float mb-5">
-                <input name="description" type="text" placeholder=" " value="{{ $product->description }}" />
+            <div class="form-group mb-5">
                 <label>Descrição</label>
+                <textarea class="form-control" name="description" rows="3">{{ $product->description }}</textarea>
             </div>
 
             <div class="label-float mb-5">
@@ -58,8 +58,8 @@
                 <label for="category">Categoria</label>
                 <select name="category_id" class="form-control">
                     @foreach($categories as $category)
-                    <option value="{{ $category->id }}" @if($category->id == $product->category_id) @endif>
-                        {{ $category->name }}
+                    <option value="{{$category->id}}" @if($category->id == $product->category_id) selected @endif>
+                        {{$category->name}}
                     </option>
                     @endforeach
                 </select>

@@ -20,9 +20,9 @@
             <label>Nome</label>
         </div>
 
-        <div class="label-float mb-5">
-            <input disabled name="description" type="text" placeholder=" " value="{{ $product->description }}" />
+        <div class="form-group mb-5">
             <label>Descrição</label>
+            <textarea disabled class="form-control" name="description" rows="3">{{ $product->description }}</textarea>
         </div>
 
         <div class="label-float mb-5">

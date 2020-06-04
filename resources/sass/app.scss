@@ -178,7 +178,7 @@ input:disabled {
     background: transparent;
     color: #ffffff;
 
-    &:focus{
+    &:focus {
         color: #ffffff;
         background: transparent;
     }
@@ -195,4 +195,13 @@ input:disabled {
     &::-ms-input-placeholder {
         color: #ffffff;
     }
+}
+
+textarea {
+    border: 0 !important;
+    border-bottom: 2px solid lightgrey !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
