@@ -17,7 +17,7 @@ class EditProductRequest extends FormRequest
             'name' => ['required', 'max:255', 'min:3' , \Illuminate\Validation\Rule::unique('products')->ignore($this->product['id'])],
             'description' => 'required',
             'price' => 'required',
-            'discount' => 'required',
+            'discount' => 'required|max:2',
             'stock' => 'required',
             'category_id' => 'required'
         ];
@@ -33,6 +33,7 @@ class EditProductRequest extends FormRequest
             'description.required' => 'O campo descrição é obrigatório',
             'price.required' => 'O campo preço é obrigatório',
             'discount.required' => 'O campo desconto é obrigatório',
+            'discount.max' => 'Máximo de 2 caracteres no campo desconto',
             'stock.required' => 'O campo estoque é obrigatório',
             'category_id.required' => 'É obrigatório o produto conter uma categoria'
         ];

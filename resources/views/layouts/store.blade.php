@@ -48,6 +48,8 @@
 
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+
+                        @if (\App\Category::all()->count())
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle text-white" id="navbarCategoria" role="button"
                                 data-toggle="dropdown"> Categorias</a>
@@ -65,14 +67,15 @@
 
                             </div>
                         </li>
+                        @endif
 
+                        @if (\App\Tag::all()->count())
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle text-white" id="navbarTag" role="button"
                                 data-toggle="dropdown"> Tags</a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarTag">
                                 @foreach (\App\Tag::all() as $tag)
-
                                 @if ($tag->products->count())
                                 <a class="dropdown-item" href="{{ route('search-tag', $tag->id) }}">{{ $tag->name }}</a>
                                 @endif
@@ -80,6 +83,7 @@
                                 @endforeach
                             </div>
                         </li>
+                        @endif
                     </ul>
                     <!-- Left Side Of Navbar -->
 

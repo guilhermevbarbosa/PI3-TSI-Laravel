@@ -18,7 +18,7 @@ class CreateProductRequest extends FormRequest
             'image' => 'required|image',
             'description' => 'required',
             'price' => 'required',
-            'discount' => 'required',
+            'discount' => 'required|max:2',
             'stock' => 'required',
             'category_id' => 'required'
         ];
@@ -32,6 +32,7 @@ class CreateProductRequest extends FormRequest
             'description.required' => 'O campo descrição é obrigatório',
             'price.required' => 'O campo preço é obrigatório',
             'discount.required' => 'O campo desconto é obrigatório',
+            'discount.max' => 'Máximo de 2 caracteres no campo desconto',
             'stock.required' => 'O campo estoque é obrigatório',
             'category_id.required' => 'É obrigatório o produto conter uma categoria',
             'image.image' => 'O campo imagem deve conter um arquivo do tipo imagem',
