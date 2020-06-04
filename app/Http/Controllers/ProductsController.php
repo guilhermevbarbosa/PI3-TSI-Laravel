@@ -38,7 +38,7 @@ class ProductsController extends Controller
     {
         // Salva a imagem no storage
         $image = $request->image->store('products');
-        
+
         // Salva a imagem e atualiza o endereço da imagem no banco
         $product = Product::create($request->all());
         $product->image = $image;
@@ -48,7 +48,7 @@ class ProductsController extends Controller
         if($request->tags){
             $product->tags()->attach($request->tags);
         }
-        
+
         session()->flash('success', 'Produto criado com sucesso!');
         return redirect(route('products.index'));
     }
@@ -100,7 +100,7 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-        // Busca o produto entre a lixeira e os ativados 
+        // Busca o produto entre a lixeira e os ativados
         $product = Product::withTrashed()->where('id', $id)->firstOrFail();
 
         // Se o produto está na lixeira, deleta a imagem do storage e exclui o produto do banco
@@ -110,7 +110,7 @@ class ProductsController extends Controller
                 session()->flash('error', 'O produto não pode ser excluído definitivamente pois ele está no carrinho de clientes');
                 return redirect()->back();
             }
-            
+
             if(OrderProduct::all()->where('product_id', $id)->count() > 0){
                 session()->flash('error', 'O produto não pode ser excluído definitivamente pois ele faz parte de pedido de clientes');
                 return redirect()->back();
