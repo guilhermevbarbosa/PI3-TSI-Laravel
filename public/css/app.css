@@ -11274,3 +11274,12 @@ input:disabled {
   color: #ffffff;
 }
 
+textarea {
+  border: 0 !important;
+  border-bottom: 2px solid lightgrey !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+

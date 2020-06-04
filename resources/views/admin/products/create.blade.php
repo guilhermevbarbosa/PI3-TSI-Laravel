@@ -33,9 +33,9 @@
                 <label>Nome</label>
             </div>
 
-            <div class="label-float mb-5">
-                <input name="description" type="text" placeholder=" " value="{{ old('description') }}" />
+            <div class="form-group mb-5">
                 <label>Descrição</label>
+                <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
             </div>
 
             <div class="label-float mb-5">
