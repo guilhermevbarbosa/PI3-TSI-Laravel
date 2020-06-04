@@ -47,13 +47,13 @@
         </div>
 
         @endforelse
-
-        <div class="row">
-            <div class="d-flex justify-content-center mt-4 m-auto">
-                {{ $products->appends(['s' => request()->query('s')])->links() }}
-            </div>
-        </div>
-
     </div>
+
+    <div class="row">
+        <div class="d-flex justify-content-center mt-4 m-auto">
+            {{ $products->appends(['s' => request()->query('s')])->links() }}
+        </div>
+    </div>
+
 </section>
 @endsection

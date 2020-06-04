@@ -12,7 +12,7 @@
 <h2 class="text-center">Editar produto</h2>
 
 <form action="{{ route('products.update', $product->id) }}" class="p-3 col-md-6 offset-md-3 col-sm-12" method="POST"
-    enctype="multipart/form-data">
+    enctype="multipart/form-data" novalidate>
 
     @if($errors->any())
     <div class="alert alert-danger">

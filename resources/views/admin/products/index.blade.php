@@ -43,8 +43,8 @@
                 <tr class="center">
                     <th scope="row"><img src="{{ asset('storage/' .$product->image) }}" alt="{{ $product->name }}"
                             width="50" height="50"></th>
-                    <th scope="row">{{$product->name}}</th>
-                    <td>{{ $product->description }}</td>
+                    <th scope="row">{{$product->limitString($product->name)}}</th>
+                    <td>{{ $product->limitString($product->description) }}</td>
                     <td>R$ {{ $product->price }}</td>
                     <td>{{ $product->discount }}%</td>
                     <td>{{ $product->stock }}</td>
